@@ -1,13 +1,12 @@
 const config = {
-  SITE_NAME: "DRIS ELAMRI",
-  SITE_DESCRIPTION: "dris elamri. 17y/o entrepreneur, developer, designer, & creator from minnesota.",
+  SITE_NAME: "OJUS G.",
+  SITE_DESCRIPTION: "ojus g. 20y/o, developer, psychedelic digiart, basketball U21 from india.",
   MAIN_BRANCH: "main",
-  SITE_URL: "https://dris.one",
+  SITE_URL: "https://ojuss.me",
   HEADER: {
-    contact: "/contact",
-    linkedin: "https://www.linkedin.com/in/driselamri/",
-    github: "https://github.com/dris-e",
-    twitter: "https://x.com/driselamri",
+    linkedin: "https://www.linkedin.com/in/ojuss/",
+    github: "https://github.com/ojuss",
+    twitter: "https://x.com/ojussw",
   },
 } as const;
 
