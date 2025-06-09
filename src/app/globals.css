@@ -132,3 +132,36 @@
     @apply bg-custom/50;
   }
 }
+
+/* ASCII Animation Styles */
+.ascii-display {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  white-space: pre;
+  transition: all 0.25s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+  cursor: text;
+  pointer-events: none;
+  background-color: #4d5eff;
+  color: white;
+  font-size: clamp(10px, 1vw, 12px);
+}
+
+.opacity {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.background {
+  background-color: white;
+  cursor: auto !important;
+}

@@ -5,6 +5,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import config from "../constants/config";
 import "./globals.css";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,7 +59,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetBrainsMono.variable} antialiased`}>
-      <body className="font-inter bg-background text-foreground relative w-full min-h-screen">
+      <head>
+        <meta name="theme-color" content="#ffffff" />
+      </head>
+      <body className="font-inter bg-background text-foreground relative w-full min-h-screen background">
+        <Script 
+          src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"
+          strategy="beforeInteractive"
+        />
         <main className="flex flex-col w-full h-full max-w-xl mx-auto justify-start min-h-screen px-4 md:px-0">
           <Header />
           <Container>
@@ -66,6 +74,7 @@ export default function RootLayout({
           </Container>
         </main>
         <Footer />
+        <div id="ascii-display" aria-hidden="true" className="ascii-display opacity"></div>
       </body>
     </html>
   );

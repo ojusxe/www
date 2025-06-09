@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <style>
+      @font-face {
+        font-family: "Power Grotesk";
+        src: url("https://dris.llc/assets/fonts/PowerGrotesk.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Power Grotesk";
+        src: url("https://dris.llc/assets/fonts/PowerGrotesk.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-family: "Power Grotesk", Arial, Helvetica, sans-serif;
+        font-size: 67.49px;
+      }
+
+      .cls-3 {
+        fill: #4d5eff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <rect class="cls-3" width="600" height="400"/>
+    <g>
+      <text class="cls-2" transform="translate(286.91 223.6)"><tspan x="0" y="0">DRIS</tspan></text>
+      <g>
+        <polygon class="cls-1" points="215.12 157.5 214.29 160.13 207.7 181 199.34 207.44 193.61 207.44 188.65 222.53 193.1 222.53 187.56 239.96 169.88 239.96 196.98 157.5 215.12 157.5"/>
+        <polygon class="cls-1" points="260.13 239.96 240.56 239.96 235.27 222.54 239.74 222.54 234.8 207.44 230.55 207.44 221.57 178.37 215.12 157.5 233.15 157.5 260.13 239.96"/>
+      </g>
+    </g>
+  </g>
+</svg>
