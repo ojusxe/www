@@ -1,8 +1,3 @@
-// import ComponentContainer from "@/components/component-container";
-// import { Badge } from "@/components/dris/badge";
-// import { Button } from "@/components/dris/button";
-
-import { calculateAge } from "@/lib/utils";
 import Achievements from "@/components/sections/achievements";
 import CurrentProjects from "@/components/sections/current-projects";
 import TLDR from "@/components/sections/tldr";
@@ -11,12 +6,12 @@ import PastProjects from "@/components/sections/past-projects";
 import Directory from "@/components/sections/directory";
 import Snippets from "@/components/sections/snippets";
 import MdxLayout from "@/components/mdx-layout";
+import Contact from "@/components/sections/contacts";
 
 export default async function HomePage() {
   return (
     <MdxLayout>
-      <h2>CIAO! I&apos;M OJUS<span className="animate-caret-blink">.</span></h2>
-      <p>i&apos;m {calculateAge()}, from <a href="https://www.exploreminnesota.com/media/facts-figures">panipat (india)</a>.</p>
+      <Contact />
       <p>i&apos;ve been building things and working for startups for over an year now.</p>
       <Achievements />
       <CurrentProjects />

@@ -121,7 +121,6 @@ export default function Header() {
       <Link href="/" onClick={handleClick}>
         <div className="h-6 w-6 aspect-square bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div>
       </Link>
-     
       {/* <div className="flex items-center gap-2 underline text-sm">
         {Object.entries(config.HEADER).map(([key, value]) => (
           <Link href={value} target="_blank" key={key}>
