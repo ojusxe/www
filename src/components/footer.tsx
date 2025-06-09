@@ -11,13 +11,6 @@ export default function Footer() {
             <ArrowUpIcon height={12} width={12} />
           </Link>
         </span>
-
-        <p>
-          🟦 BY{" "}
-          <Link href="https://ojuss.me" target="_blank" className="underline">
-            OJUS
-          </Link>
-        </p>
       </div>
     </footer>
   );
