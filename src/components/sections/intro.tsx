@@ -6,11 +6,11 @@ import { IoDocument } from "react-icons/io5";
 import { calculateAge } from "@/lib/utils";
 import config from "@/constants/config";
 
-export default function Contact() {
+export default function Intro() {
   return (
     <>
         <h2>CIAO! I&apos;M OJUS<span className="animate-caret-blink">.</span></h2>
-        <p>i&apos;m {calculateAge()}, from <a href="https://panipat.gov.in/">panipat (india)</a>. i'm a computer science undergrad <Link href="https://ptu.ac.in/">@punjab technical university. </Link><br />
+        <p>i'm a computer science undergrad <Link href="https://ptu.ac.in/">@punjab technical university</Link>, {calculateAge()} y/o, from <a href="https://panipat.gov.in/">panipat (india)</a>.<br />
         <br/>
         reach out:{" "}
         <Link
@@ -25,14 +25,15 @@ export default function Contact() {
           find me:{" "}
           <span className="flex sm:flex-row flex-col gap-3 pt-2">
             {socials.map(({ icon: Icon, label, href }) => (
-              <div key={label}>
+              <div key={label} className="flex">[]
+              {" "}
               <Link
                 key={label}
                 href={href}
                 target="_blank"
                 className="flex items-center transition-colors gap-2"
               >
-               [<Icon/>]<span className="">{label}</span> 
+               <span className="">{label}</span> 
               </Link>
               </div>
             ))}

@@ -3,11 +3,11 @@ export default function CurrentProjects() {
     <>
       <h4>SOME PROJECTS I&apos;M WORKING ON:</h4>
       <ul>
-        <li><a href="https://cluely.com">cluely.com</a> - growth intern</li>
-        <li><a href="https://callwalker.net">callwalker.net</a> - college connection agent</li>
-        <li><a href="https://twin.ad">twin.ad</a> - create your own ai twin</li>
-        <li><a href="https://ui.dris.one">ui.dris.one</a> - 2000s inspired component library</li>
+        <li><a href="https://cluely.com">hammerai.com</a> - software engineer</li>
+        <li><a href="">goat-notes</a> - ai powered notes app</li>
+        <li><a href="">plan-z</a> -  because plan a through y didn't work, and that's okay</li>
+        <li><a href="https://www.sanity.io">sanity.io</a> - figuring out headless cms</li>
       </ul>
     </>
-  );
+  );``
 }
