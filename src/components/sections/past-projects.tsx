@@ -4,7 +4,7 @@ import { tenYears } from "@/lib/utils";
 export default function PastProjects() {
   return (
     <>
-      <h4></h4>
+      <h4>SOME OF MY PAST PROJECTS</h4>
       <Snippet title="HOW I STARTED">
         <p>i taught myself to code summer of 6th grade.</p>
 
