@@ -3,7 +3,7 @@ export default function Experience() {
     <>
       <h4>MY WORK SO FAR:</h4>
       <ul>
-        <li>(25-) <a href="https://hammerai.com">hammerai</a> - developing a monorepo w/ 300K monthly visits</li>
+        <li>(25-) <a href="https://hammerai.com">hammerai</a> - software engineer</li>
         <li>(24) <a href="https://flib.store">flib</a> - contribute to custom swags e-commerce store</li>
         <li>(24) <a href="https://noviga.tech">noviga automation</a> - automation assest management system</li>
         <li>(24) <a href="https://craftlab.ai">meta craftlab</a> - unpaid, full-stack developer training</li>

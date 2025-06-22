@@ -4,9 +4,8 @@ const config = {
   MAIN_BRANCH: "main",
   SITE_URL: "https://ojuss.me",
   HEADER: {
-    linkedin: "https://www.linkedin.com/in/ojuss/",
-    github: "https://github.com/ojuss",
-    twitter: "https://x.com/ojussw",
+    resources: "/resources",
+    gallery: "/gallery",
   },
 } as const;
 

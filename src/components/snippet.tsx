@@ -9,11 +9,13 @@ function DefaultButton({
   onClick,
   absolute,
   disabled,
+  
 }: {
   children: React.ReactNode;
   onClick: () => void;
   absolute?: boolean;
   disabled?: boolean;
+  
 }) {
   return (
     <Button
@@ -30,17 +32,18 @@ function DefaultButton({
   );
 }
 
-export function Snippet({ children, title }: { children: React.ReactNode; title?: string }) {
+export function Snippet({ children, title, className }: { children: React.ReactNode; title?: string, className?: string }) {
   const [open, setOpened] = useState(false);
 
   return (
-    <div className="relative w-full mb-4 shadow-xs">
+    <div className={`relative w-full mb-4 shadow-xs `}>
       <DefaultButton onClick={() => setOpened(!open)} absolute>
         {open ? "CLOSE" : "OPEN"}
       </DefaultButton>
       <pre
         className={cn(
-          "bg-gray-50 prose-p:last-of-type:mb-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto",
+          "prose-p:last-of-type:mb-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto",
+          className,
           !open && "cursor-pointer hover:underline"
         )}
         onClick={!open ? () => setOpened(!open) : undefined}

@@ -1,54 +1,62 @@
 import { Snippet } from "@/components/snippet";
 import { tenYears } from "@/lib/utils";
+import Image from "next/image";
+import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function PastProjects() {
   return (
     <>
       <h4>SOME OF MY PAST PROJECTS</h4>
-      <Snippet title="HOW I STARTED">
-        <p>i taught myself to code summer of 6th grade.</p>
+      <Snippet title="ROAD ANOMALY DETECTION" className="">
+        <p>road anomaly detection was a part of my 6 semester minor project that leverages advanced CV techniques to identify and classify road anomalies, such as potholes, cracks, and other surface irregularities.</p>
 
-        <p>i &quot;launched&quot; my first app, lemonayd (<a href="https://www.lemonaid.com/">lemonaid</a> was taken) later that year.</p>
+        <p>team #22, my awesome teamates
+          <a href="https://nav9v.me" target="_blank">nav9v</a>
+          && 
+          <a href="https://iamnikitaa.github.io/" target="_blank">nikita</a> </p>
 
-        <p>it was a fundraising app for schools. i became one of the youngest winners of the <a href="https://www.congressionalappchallenge.us/">congressional app challenge</a> from my submission.</p>
+        <Image src={"/rad.avif"} alt="road anomaly detection" width={800} height={450} className="rounded-sm" />
 
-        <p>i recently got into startups (mid-2023) after watching <a href="https://www.youtube.com/watch?v=4VDZRR07Eqw">this video</a>.</p>
-
-        <p>one of my earliest ambitions was to &quot;invent&quot; something. the idea of creating things that other people could use seemed pretty interesting.</p>
-
-        <p>i always knew this is what i wanted to do.</p>
+        <div className="">
+          <Link href="https://github.com/collabdoor/Road-Anomaly-Detection" target="_blank"><GitHubLogoIcon className="inline-block mr-2" />
+          source
+          </Link>
+          <Link href="https://road-anomaly-detection.streamlit.app/" target="_blank"><Link1Icon className="inline-block mx-2" />
+          visit
+          </Link>
+        </div>
       </Snippet>
 
-      <Snippet title="MY GOAL">
-        <p>creating a product so seamless you never notice it. something like a coffee cup, chair, street light, etc.</p>
+      <Snippet title="COLLABDOOR && DUMBAF">
+        <p>this community is made by CS undergrad students with intention to build cool stuff that touches a few hundread of lives if not thousand. started the community to provide course relevant resources for CS majors.</p>
 
-        <p>something that provides value & is used so frequently it becomes a part of your life without questioning it.</p>
+        <p>my awesome teamates <a href="https://nav9v.me" target="_blank">nav9v</a> && <a href="https://www.github.com/iamnikitaa" target="_blank">nikita</a> && <a href="https://portfolio-priyam-srivastavas-projects-a9e142b7.vercel.app/" target="_blank">priyam</a></p>
 
-        <p><a href="https://en.wikipedia.org/wiki/Dieter_Rams">dieter rams</a> said &quot;the best design is invisible&quot;. i always think about that.</p>
+        <Image src={"/dumbaf.avif"} alt="collabdoor and dumbaf" width={800} height={450} className="rounded-sm" />
 
-        <p>probably something in tech/science.</p>
+        <div className="">
+          <Link href="https://github.com/collabdoor/dumbAF" target="_blank"><GitHubLogoIcon className="inline-block mr-2" />source</Link>
+          <Link href="https://collabdoor.github.io/dumbAF" target="_blank"><Link1Icon className="inline-block mx-2" />visit</Link>
+        </div>
       </Snippet>
 
-      <Snippet title="MY MOTIVATIONS">
-        <p>i&apos;ve never really been driven by money. i read this on a fortune cookie from panda express a few years back. something like &quot;money is a means to an end, not the end itself&quot;.</p>
+      <Snippet title="GOPHER GOLANG">
+        <p>i wanted to practice to grow out of web dev and not restrict myself to javascript frameworks. golang was a suggested language from a friend <a href="https://sanyam.xyz" target="_blank">sanyam</a>.</p>
+        <p><a>project gomini</a> - a backend api built with go and gemini 2.5 to generate intelligent responses based on user prompts. </p>
+        <p><a>project strip-go</a> - implementation of stripe's payment intent API integrated with go backend.</p>
 
-        <p>for now, i do it for the love of the game. i&apos;m always trying to be the best i can in everything i do.</p>
-
-        <p>i&apos;ve been fortunate enough to never have to worry about food, money, housing, or education. so maybe this changes in the future. but i wasn&apos;t after fancy cars or nice watches like most people around my age.</p>
-
-        <p>i think this mindset is becoming more common, but i&apos;d like to get to a point where i can live without having to worry about money.</p>
-
-        <p>no mansion or private jet. i&apos;d just keep it simple.</p>
+        <Image src={"/gogo.webp"} alt="gopher and go" width={800} height={450} className="rounded-sm" />
+        <Link href="https://github.com/ojuss/gemini-go" target="_blank"><GitHubLogoIcon className="inline-block mr-2" />source</Link>
+        <Link href="https://github.com/ojuss/stripe-payment-intent" target="_blank"><GitHubLogoIcon className="inline-block mx-2" />source</Link>
       </Snippet>
 
-      <Snippet title={`WHERE I SEE MYSELF IN ${tenYears().toLocaleString()} DAYS`}>
-        <p>in 10 years, running a company or in vc.</p>
+      <Snippet title="SCIENTIFIC ILLUSTRATOR PORTFOLIO">
+        <p>a professionally designed portfolio website for a scientific illustrator, showcasing their work with a clean, modern interface.</p>
 
-        <p>i move around a lot, so not sure if i&apos;d get the most value sticking to 1 thing for many years. i enjoy creating & selling.</p>
+        <Image src={"/illustrations.webp"} alt="gopher and go" width={800} height={450} className="rounded-sm" />
 
-        <p>maybe not going to college, so can&apos;t say for sure where i end up.</p>
-
-        <p>i&apos;ve been hustling my whole life. im sure i&apos;ll figure something out.</p>
+        <Link href="https://oshgupta.com" target="_blank"><Link1Icon className="inline-block mx-2" />visit</Link>
       </Snippet>
     </>
   );
