@@ -4,6 +4,7 @@ import config from "@/constants/config";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import ThemeToggle from "./theme-toggle";
 
 declare global {
   interface Window {
@@ -118,15 +119,20 @@ export default function Header() {
 
   return (
     <header className="flex justify-between font-mono items-start w-full py-4 text-gray-600" id="top">
-      <Link href="/" onClick={handleClick}>
+      <div>
+      <Link href="/" onClick={handleClick} className="inline-block mr-2">
         <div className="h-6 w-6 aspect-square bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div>
       </Link>
-      <div className="flex items-center gap-2 underline text-sm">
-        {Object.entries(config.HEADER).map(([key, value]) => (
-          <Link href={value} key={key}>
-            {key.toUpperCase()}
-          </Link>
-        ))}
+      <ThemeToggle />
+      </div>
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 underline text-sm">
+          {Object.entries(config.HEADER).map(([key, value]) => (
+            <Link href={value} key={key}>
+              {key.toUpperCase()}
+            </Link>
+          ))}
+        </div>
       </div>
     </header>
   );

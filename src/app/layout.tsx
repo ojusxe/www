@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { Container } from "@/components/container";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { ThemeProvider } from "@/contexts/theme-context";
 import config from "../constants/config";
 import "./globals.css";
 import Script from "next/script";
@@ -62,18 +63,20 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="font-inter bg-background text-foreground relative w-full min-h-screen background">
-        <Script 
-          src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"
-          strategy="beforeInteractive"
-        />
-        <main className="flex flex-col w-full h-full max-w-xl mx-auto justify-start min-h-screen px-4 md:px-0">
-          <Header />
-          <Container>
-            {children}
-          </Container>
-        </main>
-        <Footer />
-        <div id="ascii-display" aria-hidden="true" className="ascii-display opacity"></div>
+        <ThemeProvider>
+          <Script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"
+            strategy="beforeInteractive"
+          />
+          <main className="flex flex-col w-full h-full max-w-xl mx-auto justify-start min-h-screen px-4 md:px-0">
+            <Header />
+            <Container>
+              {children}
+            </Container>
+          </main>
+          <Footer />
+          <div id="ascii-display" aria-hidden="true" className="ascii-display opacity"></div>
+        </ThemeProvider>
       </body>
     </html>
   );

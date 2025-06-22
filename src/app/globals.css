@@ -165,3 +165,141 @@
   background-color: white;
   cursor: auto !important;
 }
+
+/* Blue Theme Styles */
+.blue-theme {
+  --background: #4d5eff !important;
+  --foreground: #ffffff !important;
+  --card: rgba(77, 94, 255, 0.8) !important;
+  --card-foreground: #ffffff !important;
+  --popover: rgba(77, 94, 255, 0.9) !important;
+  --popover-foreground: #ffffff !important;
+  --primary: #ffffff !important;
+  --primary-foreground: #4d5eff !important;
+  --secondary: rgba(255, 255, 255, 0.1) !important;
+  --secondary-foreground: #ffffff !important;
+  --muted: rgba(255, 255, 255, 0.1) !important;
+  --muted-foreground: #e0e0e0 !important;
+  --accent: rgba(255, 255, 255, 0.1) !important;
+  --accent-foreground: #ffffff !important;
+  --destructive: #ff6b6b !important;
+  --border: rgba(255, 255, 255, 0.2) !important;
+  --input: rgba(255, 255, 255, 0.1) !important;
+  --ring: rgba(255, 255, 255, 0.3) !important;
+
+  background-color: #4d5eff !important;
+  color: #ffffff !important;
+  transition: all 0.25s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.blue-theme * {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Exclude snippets from blue theme styling */
+.blue-theme pre {
+  background-color: #ffffff !important;
+  color: #6b7280 !important;
+  border-color: #e5e7eb !important;
+}
+
+.blue-theme pre * {
+  color: #6b7280 !important;
+  border-color: #e5e7eb !important;
+}
+
+.blue-theme pre button {
+  color: #6b7280 !important;
+  background-color: transparent !important;
+}
+
+.blue-theme pre button:hover {
+  color: #374151 !important;
+  background-color: transparent !important;
+}
+
+.blue-theme a {
+  color: #ffffff !important;
+}
+
+.blue-theme a:hover {
+  color: #e0e0e0 !important;
+}
+
+.blue-theme .border {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.blue-theme .border-border {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.blue-theme .text-gray-300 {
+  color: #e0e0e0 !important;
+}
+
+.blue-theme .text-gray-600:not(pre *) {
+  color: #c0c0c0 !important;
+}
+
+.blue-theme .bg-background {
+  background-color: #4d5eff !important;
+}
+
+.blue-theme .bg-card {
+  background-color: rgba(77, 94, 255, 0.8) !important;
+}
+
+.blue-theme ::selection {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.blue-theme ::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Additional blue theme overrides for better compatibility */
+.blue-theme .prose p,
+.blue-theme .prose h1,
+.blue-theme .prose h2,
+.blue-theme .prose h3,
+.blue-theme .prose h4,
+.blue-theme .prose h5,
+.blue-theme .prose h6,
+.blue-theme .prose li {
+  color: #ffffff !important;
+}
+
+.blue-theme button {
+  color: #4d5eff !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.blue-theme button:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.blue-theme .bg-gray-50 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.blue-theme .bg-gray-100 {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.blue-theme .text-gray-900 {
+  color: #ffffff !important;
+}
+
+.blue-theme .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.blue-theme .border-gray-300 {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.blue-theme .hover\:border-gray-400:hover {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
