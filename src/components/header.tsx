@@ -18,9 +18,8 @@ export default function Header() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(7);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
-  
-  const frameRate = 45;
-  const totalFrames = 72;
+    const frameRate = 20;
+  const totalFrames = 106;
   const path = "/assets/dris-frames-alt";
 
   const decompressAsciiArt = (compressedBase64: string) => {
@@ -105,7 +104,7 @@ export default function Header() {
     if (pathname !== '/') {
       setTimeout(() => {
         router.push('/');
-      }, (totalFrames - currentFrame + 1) * frameRate + 500);
+      }, 2000);
     }
   };
 

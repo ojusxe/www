@@ -50,3 +50,5 @@ worker-configuration.d.ts
 .wrangler
 .wrangler/*
 
+/public/assets/dris-frames-alt-backup
+/public/assets/dris-frames-alt-backup-original
