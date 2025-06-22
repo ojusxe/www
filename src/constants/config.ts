@@ -5,7 +5,7 @@ const config = {
   SITE_URL: "https://ojuss.me",
   HEADER: {
     resources: "/resources",
-    gallery: "/gallery",
+    dreamspace: "/dreamspace",
   },
 } as const;
 

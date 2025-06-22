@@ -21,7 +21,7 @@ const galleryItems = [
   }
 ];
 
-export default function GalleryPage() {
+export default function DreamSpace() {
   return (
     <MdxLayout>
       <h4>GALLERY:</h4>
