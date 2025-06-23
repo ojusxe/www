@@ -166,6 +166,11 @@
   cursor: auto !important;
 }
 
+/* Hide content initially until intro plays */
+body:not(.background) main {
+  opacity: 0;
+}
+
 /* Blue Theme Styles */
 .blue-theme {
   --background: #4d5eff !important;

@@ -1,7 +1,7 @@
 export default function Experience() {
   return (
     <>
-      <h4>MY WORK SO FAR:</h4>
+      <h4>MY WORK EXPERIENCE SO FAR:</h4>
       <ul>
         <li>(25-) <a href="https://hammerai.com">hammerai</a> - software engineer</li>
         <li>(24) <a href="https://flib.store">flib</a> - contribute to custom swags e-commerce store</li>

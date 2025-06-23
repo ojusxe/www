@@ -17,10 +17,44 @@ export default function Header() {
   const pathname = usePathname();
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(7);
-  const animationRef = useRef<NodeJS.Timeout | null>(null);
-    const frameRate = 20;
+  const animationRef = useRef<NodeJS.Timeout | null>(null);  const [hasPlayedIntro, setHasPlayedIntro] = useState(false);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const frameRate = 20;
   const totalFrames = 106;
-  const path = "/ojus-frames-alt";
+  const path = "/ojus-frames-alt";  // Check if intro should play and start immediately
+  useEffect(() => {
+    const isRootRoute = pathname === '/';
+    const playedIntro = sessionStorage.getItem('hasPlayedIntro');
+    const body = document.body;
+    const main = document.querySelector("main");
+    
+    // Play animation if: 1) First time visitor OR 2) On root route (including refresh)
+    if (!playedIntro || isRootRoute) {
+      // Start animation immediately
+      setIsFirstLoad(true);
+      // Ensure content is hidden during intro
+      if (body) body.classList.remove("background");
+      if (main) main.classList.add("opacity");
+      playAnimation();
+      
+      // Only set sessionStorage if it's not already set (for first-time visitors)
+      if (!playedIntro) {
+        sessionStorage.setItem('hasPlayedIntro', 'true');
+      }
+    } else {
+      // Subsequent visits to non-root pages - show content immediately
+      setHasPlayedIntro(true);
+      setIsFirstLoad(false);
+      if (body) body.classList.add("background");
+      if (main) main.classList.remove("opacity");
+    }
+  }, [pathname]); // Added pathname dependency to trigger on route changes
+  // Play animation when navigating to dreamspace (but not from root route refresh)
+  useEffect(() => {
+    if (pathname === '/dreamspace' && hasPlayedIntro && !isFirstLoad) {
+      playAnimation();
+    }
+  }, [pathname, hasPlayedIntro, isFirstLoad]);
 
   const decompressAsciiArt = (compressedBase64: string) => {
     if (!window.pako) return "";
@@ -81,10 +115,11 @@ export default function Header() {
         if (asciiDisplay) asciiDisplay.classList.add("opacity");
         if (body) body.classList.add("background");
         if (main) main.classList.remove("opacity");
-        
-        // Reset state
+          // Reset state
         setCurrentFrame(7);
         setIsAnimating(false);
+        setIsFirstLoad(false);
+        setHasPlayedIntro(true);
         if (themeColorMeta) themeColorMeta.content = "#ffffff";
         return;
       }

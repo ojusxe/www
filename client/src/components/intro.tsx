@@ -21,10 +21,11 @@ export default function Intro() {
       </p>
       <div className="flex items-center font-mono opacity-80 hover:opacity-100 gap-4">
         <div className="">
-          find me:{" "}
-          <span className="flex sm:flex-row flex-col gap-3 pt-2">
+          <span className="flex md:flex-row flex-col gap-1 md:gap-3 pt-2">
             {socials.map(({ icon: Icon, label, href }) => (
-              <div key={label} className="flex">[]
+              <div key={label} className="flex items-center">[
+               {" "} <Icon /> {" "}
+              ]
               {" "}
               <Link
                 key={label}
@@ -62,6 +63,6 @@ const socials = [
   {
     icon: IoDocument,
     label: "RESUME",
-    href: "/ojusmarchcv.pdf",
+    href: "/ojusmarchcvv.pdf",
   },
 ];
