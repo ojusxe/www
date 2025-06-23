@@ -1,8 +1,4 @@
-import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 import createMDX from "@next/mdx";
-
-setupDevPlatform().catch(console.error);
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {

@@ -1,5 +1,4 @@
 import { Snippet } from "@/components/ui/snippet";
-import { tenYears } from "@/lib/utils";
 import Image from "next/image";
 import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons";
 import Link from "next/link";
