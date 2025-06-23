@@ -15,7 +15,7 @@ export default function PastProjects() {
           && 
           <a href="https://iamnikitaa.github.io/" target="_blank">nikita</a> </p>
 
-        <Image src={"/rad.avif"} alt="road anomaly detection" width={800} height={450} className="rounded-sm" />
+        <Image src="/projects/rad.avif" alt="road anomaly detection" width={800} height={450} className="rounded-sm" />
 
         <div className="">
           <Link href="https://github.com/collabdoor/Road-Anomaly-Detection" target="_blank"><GitHubLogoIcon className="inline-block mr-2" />
@@ -32,7 +32,7 @@ export default function PastProjects() {
 
         <p>my awesome teamates <a href="https://nav9v.me" target="_blank">nav9v</a> && <a href="https://www.github.com/iamnikitaa" target="_blank">nikita</a> && <a href="https://portfolio-priyam-srivastavas-projects-a9e142b7.vercel.app/" target="_blank">priyam</a></p>
 
-        <Image src={"/dumbaf.avif"} alt="collabdoor and dumbaf" width={800} height={450} className="rounded-sm" />
+        <Image src="/projects/dumbaf.avif" alt="collabdoor and dumbaf" width={800} height={450} className="rounded-sm" />
 
         <div className="">
           <Link href="https://github.com/collabdoor/dumbAF" target="_blank"><GitHubLogoIcon className="inline-block mr-2" />source</Link>
@@ -45,7 +45,7 @@ export default function PastProjects() {
         <p><a>project gomini</a> - a backend api built with go and gemini 2.5 to generate intelligent responses based on user prompts. </p>
         <p><a>project strip-go</a> - implementation of stripe's payment intent API integrated with go backend.</p>
 
-        <Image src={"/gogo.webp"} alt="gopher and go" width={800} height={450} className="rounded-sm" />
+        <Image src="/projects/gogo.webp" alt="gopher and go" width={800} height={450} className="rounded-sm" />
         <Link href="https://github.com/ojuss/gemini-go" target="_blank"><GitHubLogoIcon className="inline-block mr-2" />source</Link>
         <Link href="https://github.com/ojuss/stripe-payment-intent" target="_blank"><GitHubLogoIcon className="inline-block mx-2" />source</Link>
       </Snippet>
@@ -53,7 +53,7 @@ export default function PastProjects() {
       <Snippet title="SCIENTIFIC ILLUSTRATOR PORTFOLIO">
         <p>a professionally designed portfolio website for a scientific illustrator, showcasing their work with a clean, modern interface.</p>
 
-        <Image src={"/illustrations.webp"} alt="gopher and go" width={800} height={450} className="rounded-sm" />
+        <Image src="/projects/illustrations.webp" alt="gopher and go" width={800} height={450} className="rounded-sm" />
 
         <Link href="https://oshgupta.com" target="_blank"><Link1Icon className="inline-block mx-2" />visit</Link>
       </Snippet>
