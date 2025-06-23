@@ -16,17 +16,3 @@ export function calculateAge() {
   }
   return age;
 }
-
-export function calculateDays() {
-  const days = Math.floor((today.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24));
-  return days;
-}
-
-export function tenYears() {
-  const targetDate = new Date("2035-04-12"); // from april 12th, 2025
-
-  const timeDiff = targetDate.getTime() - today.getTime();
-  const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-  return daysDiff > 0 ? daysDiff : 0;
-}
