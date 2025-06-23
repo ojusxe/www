@@ -2,10 +2,11 @@ import { cn } from "../../lib/utils";
 import Image from "next/image";
 
 interface GalleryItem {
-  id: string;
-  src: string;
-  alt: string;
-  caption?: string;
+  _id: string;
+  imageUrl: string;
+  caption: string;
+  width: number;
+  height: number;
 }
 
 interface GalleryProps {
@@ -14,25 +15,74 @@ interface GalleryProps {
 }
 
 export function DreamSpace({ items, className }: GalleryProps) {
+  const getScaledDimensions = (originalWidth: number, originalHeight: number) => {
+    const minWidth = 300;
+    const maxWidth = 600;
+    const minHeight = 200;
+    const maxHeight = 800;
+    
+    const aspectRatio = originalWidth / originalHeight;
+    
+    let newWidth = originalWidth;
+    let newHeight = originalHeight;
+    
+    if (originalWidth < minWidth || originalHeight < minHeight) {
+      if (originalWidth < minWidth) {
+        newWidth = minWidth;
+        newHeight = minWidth / aspectRatio;
+      }
+      if (newHeight < minHeight) {
+        newHeight = minHeight;
+        newWidth = minHeight * aspectRatio;
+      }
+    }
+    
+    if (newWidth > maxWidth || newHeight > maxHeight) {
+      if (newWidth > maxWidth) {
+        newWidth = maxWidth;
+        newHeight = maxWidth / aspectRatio;
+      }
+      if (newHeight > maxHeight) {
+        newHeight = maxHeight;
+        newWidth = maxHeight * aspectRatio;
+      }
+    }
+    
+    return {
+      width: Math.round(newWidth),
+      height: Math.round(newHeight)
+    };
+  };
   return (
     <div className={cn("w-full", className)}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {items.map((item) => (
-          <div key={item.id} className="relative group">
-            <div className="relative aspect-[4/5] bg-gray-50 border border-gray-200 overflow-hidden hover:border-gray-300 transition-colors">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover group-hover:opacity-90 transition-opacity"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-              />
+      <div className="columns-2 lg:columns-3 ">
+        {items.map((item) => {
+          const scaledDimensions = getScaledDimensions(item.width || 400, item.height || 300);
+          
+          return (
+            <div key={item._id} className="break-inside-avoid">
+              <h5 className="text-sm font-mono text-gray-700 lowercase">{item.caption}</h5>
+              <div className="relative group overflow-hidden transition-all duration-300 hover:opacity-95">
+                {item.imageUrl && item.imageUrl.endsWith('.gif') ? (
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.caption} 
+                    className="w-full h-auto hover:shadow-md transition-shadow" 
+                  />
+                ) : (
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.caption}
+                    width={scaledDimensions.width}
+                    height={scaledDimensions.height}
+                    className="w-full h-auto hover:shadow-md transition-shadow"
+                    style={{ objectFit: 'contain' }}
+                  />
+                )}
+              </div>
             </div>
-            {item.caption && (
-              <p className="mt-2 text-xs text-gray-600 font-mono">{item.caption}</p>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -1,10 +1,19 @@
 import { client } from '../../lib/sanity'
-import Image from 'next/image'
+import { Metadata } from "next"
+import { DreamSpace } from "./dreamspace"
+import MdxLayout from "../../components/ui/mdx-layout"
+
+export const metadata: Metadata = {
+  title: "DREAMSPACE",
+  description: "some visual moments captured along the way.",
+}
 
 type GalleryItem = {
   _id: string
   caption: string
   imageUrl: string
+  width: number
+  height: number
 }
 
 export default async function DreamspaceGalleryPage() {
@@ -15,7 +24,9 @@ export default async function DreamspaceGalleryPage() {
     const query = `*[_type == "galleryItem"]{
       _id,
       caption,
-      "imageUrl": media.asset->url
+      "imageUrl": media.asset->url,
+      "width": media.asset->metadata.dimensions.width,
+      "height": media.asset->metadata.dimensions.height
     }`
 
     galleryItems = await client.fetch(query)
@@ -26,54 +37,23 @@ export default async function DreamspaceGalleryPage() {
 
   if (error) {
     return (
-      <main className="p-8 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Dreamspace Gallery</h1>
+      <MdxLayout>
+        <h4>DREAMSPACE:</h4>
         <div className="text-red-600 bg-red-50 p-4 rounded-lg">
           <p className="font-semibold">Error loading gallery:</p>
           <p className="text-sm mt-1">{error}</p>
         </div>
-      </main>
-    )
-  }
-
-  if (!galleryItems || galleryItems.length === 0) {
-    return (
-      <main className="p-8 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Dreamspace Gallery</h1>
-        <div className="text-gray-600 bg-gray-50 p-4 rounded-lg text-center">
-          <p>No gallery items found. Add some items to your Sanity CMS!</p>
-        </div>
-      </main>
+      </MdxLayout>
     )
   }
 
   return (
-    <main className="p-8 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Dreamspace Gallery</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {galleryItems.map((item) => (
-          <div key={item._id} className="space-y-2">
-            {item.imageUrl && item.imageUrl.endsWith('.gif') ? (
-              <img 
-                src={item.imageUrl} 
-                alt={item.caption} 
-                className="w-full rounded-lg shadow hover:shadow-lg transition-shadow" 
-              />
-            ) : (
-              <Image
-                src={item.imageUrl || '/placeholder.jpg'}
-                alt={item.caption}
-                width={600}
-                height={400}
-                className="rounded-lg shadow hover:shadow-lg transition-shadow object-cover"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-              />
-            )}
-            <p className="text-center text-gray-700 text-sm">{item.caption}</p>
-          </div>
-        ))}
+    <MdxLayout>
+      <h4 className='text-xl'>DREAMSPACE:</h4>
+      <p>some visuals rendered and diffused along the way.</p>
+      <div className="mt-8">
+        <DreamSpace items={galleryItems} />
       </div>
-    </main>
+    </MdxLayout>
   )
 }
