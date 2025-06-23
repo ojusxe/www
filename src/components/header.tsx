@@ -20,7 +20,7 @@ export default function Header() {
   const animationRef = useRef<NodeJS.Timeout | null>(null);
     const frameRate = 20;
   const totalFrames = 106;
-  const path = "/assets/dris-frames-alt";
+  const path = "/ojus-frames-alt";
 
   const decompressAsciiArt = (compressedBase64: string) => {
     if (!window.pako) return "";
@@ -104,7 +104,7 @@ export default function Header() {
     if (pathname !== '/') {
       setTimeout(() => {
         router.push('/');
-      }, 2000);
+      }, 200);
     }
   };
 

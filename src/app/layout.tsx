@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: config.SITE_NAME,
     description: config.SITE_DESCRIPTION,
-    images: ["/assets/og-image.png"],
+    images: ["/og-image.png"],
   },
 };
 
