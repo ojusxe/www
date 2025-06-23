@@ -1,9 +1,9 @@
-import CurrentProjects from "@/components/sections/current-projects";
-import TLDR from "@/components/sections/tldr";
-import Experience from "@/components/sections/experience";
-import PastProjects from "@/components/sections/past-projects";
-import MdxLayout from "@/components/mdx-layout";
-import Intro from "@/components/sections/intro";
+import CurrentProjects from "@/components/current-projects";
+import TLDR from "@/components/tldr";
+import Experience from "@/components/experience";
+import PastProjects from "@/components/past-projects";
+import MdxLayout from "@/components/ui/mdx-layout";
+import Intro from "@/components/intro";
 
 export default async function HomePage() {
   return (

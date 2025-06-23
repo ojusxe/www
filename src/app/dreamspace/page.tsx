@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Gallery } from "@/components/gallery";
-import MdxLayout from "@/components/mdx-layout";
+import MdxLayout from "@/components/ui/mdx-layout";
 
 export const metadata: Metadata = {
   title: "GALLERY",

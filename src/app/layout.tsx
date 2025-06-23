@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { Container } from "@/components/container";
+import { Container } from "@/components/ui/container";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/contexts/theme-context";
