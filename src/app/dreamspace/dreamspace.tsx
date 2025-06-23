@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -15,7 +13,7 @@ interface GalleryProps {
   className?: string;
 }
 
-export function Gallery({ items, className }: GalleryProps) {
+export function DreamSpace({ items, className }: GalleryProps) {
   return (
     <div className={cn("w-full", className)}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

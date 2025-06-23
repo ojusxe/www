@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import { Gallery } from "@/components/gallery";
+import { DreamSpace } from "@/app/dreamspace/dreamspace";
 import MdxLayout from "@/components/ui/mdx-layout";
 
 export const metadata: Metadata = {
-  title: "GALLERY",
+  title: "DREAMSPACE",
   description: "some visual moments captured along the way.",
 };
 
@@ -21,12 +21,12 @@ const galleryItems = [
   }
 ];
 
-export default function DreamSpace() {
+export default function Dreamspace() {
   return (
     <MdxLayout>
-      <h4>GALLERY:</h4>
-      <p>some visual moments captured along the way.</p>
-      <Gallery items={galleryItems} />
+      <h4>DREAMSPACE:</h4>
+      <p>some visuals rendered and diffused along the way.</p>
+      <DreamSpace items={galleryItems} />
     </MdxLayout>
   );
 }
