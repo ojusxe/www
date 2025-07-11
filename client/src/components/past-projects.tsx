@@ -11,9 +11,9 @@ export default function PastProjects() {
         <p>road anomaly detection was a part of my 6 semester minor project that leverages advanced CV techniques to identify and classify road anomalies, such as potholes, cracks, and other surface irregularities.</p>
 
         <p>team #22, my awesome teamates
-          <a href="https://nav9v.me" target="_blank">nav9v</a>
+          <a href="https://nav9v.me" target="_blank"> nav9v </a>
           && 
-          <a href="https://iamnikitaa.github.io/" target="_blank">nikita</a> </p>
+          <a href="https://iamnikitaa.github.io/" target="_blank"> nikita </a> </p>
 
         <Image src="/projects/rad.avif" alt="road anomaly detection" width={800} height={450} className="rounded-sm" />
 
@@ -43,7 +43,7 @@ export default function PastProjects() {
       <Snippet title="GOPHER GOLANG">
         <p>i wanted to practice to grow out of web dev and not restrict myself to javascript frameworks. golang was a suggested language from a friend <a href="https://sanyam.xyz" target="_blank">sanyam</a>.</p>
         <p><a>project gomini</a> - a backend api built with go and gemini 2.5 to generate intelligent responses based on user prompts. </p>
-        <p><a>project strip-go</a> - implementation of stripe's payment intent API integrated with go backend.</p>
+        <p><a>project stripe-go</a> - implementation of stripe's payment intent API integrated with go backend.</p>
 
         <Image src="/projects/gogo.webp" alt="gopher and go" width={800} height={450} className="rounded-sm" />
         <Link href="https://github.com/ojuss/gemini-go" target="_blank"><GitHubLogoIcon className="inline-block mr-2" />source</Link>
