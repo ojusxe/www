@@ -3,6 +3,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoDocument } from "react-icons/io5";
+import { CgMailForward } from "react-icons/cg";
 import { calculateAge } from "../lib/utils";
 
 export default function Intro() {
@@ -17,7 +18,7 @@ export default function Intro() {
         {calculateAge()} y/o, from{" "}
         <a href="https://panipat.gov.in/">panipat (india)</a>.<br />
         <br />
-        reach out:{" "}
+        reach out <CgMailForward className="h-5 w-5 inline-block" />
         <Link
           href="mailto:ojusxe@gmail.com"
           className="text-gray-300 relative group hover:underline"
@@ -56,8 +57,8 @@ const socials = [
   },
   {
     icon: FaXTwitter,
-    label: "X.COM",
-    href: "https://twitter.com/ojussw",
+    label: "TWITTER",
+    href: "https://x.com/ojussw",
   },
   {
     icon: FaLinkedin,

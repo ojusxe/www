@@ -162,13 +162,13 @@ export default function Header() {
       id="top"
     >
       <div>
-        <Link href="/" onClick={handleClick} className="inline-block mr-2">
-          <div className="h-6 w-6 aspect-square bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div>
+        <Link href="" onClick={handleClick} className="inline-block mr-2">
+          <div className="h-6 w-6 aspect-square border border-white bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div>
         </Link>
         <ThemeToggle />
       </div>
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2 underline text-sm">
+      <div className="flex items-center gap-4 ">
+        <div className="flex items-center gap-2 underline text-sm ">
           {Object.entries(config.HEADER).map(([key, value]) => (
             <Link href={value} key={key}>
               {key.toUpperCase()}

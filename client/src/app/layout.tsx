@@ -20,8 +20,8 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: config.SITE_NAME,
-    template: "%s | " + config.SITE_NAME,
+    default: "DEV | OJUS",
+    template: "%s | OJUS",
   },
   description: config.SITE_DESCRIPTION,
   robots: "index, follow",

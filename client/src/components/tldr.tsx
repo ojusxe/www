@@ -24,7 +24,7 @@ export default function TLDR() {
               alt={image.alt}
               width={0}
               height={0}
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw pointer-events-none"
               className="w-full h-auto "
             />
           </div>

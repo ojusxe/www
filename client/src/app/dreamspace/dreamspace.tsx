@@ -75,7 +75,7 @@ export function DreamSpace({ items, className }: GalleryProps) {
                   <img
                     src={item.imageUrl}
                     alt={item.caption}
-                    className="w-full h-auto hover:shadow-md transition-shadow"
+                    className="w-full h-auto hover:shadow-md transition-shadow pointer-events-none"
                   />
                 ) : (
                   <Image
@@ -83,7 +83,7 @@ export function DreamSpace({ items, className }: GalleryProps) {
                     alt={item.caption}
                     width={scaledDimensions.width}
                     height={scaledDimensions.height}
-                    className="w-full h-auto hover:shadow-md transition-shadow"
+                    className="w-full h-auto hover:shadow-md transition-shadow pointer-events-none"
                     style={{ objectFit: "contain" }}
                   />
                 )}
