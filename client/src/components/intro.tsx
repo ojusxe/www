@@ -8,9 +8,15 @@ import { calculateAge } from "../lib/utils";
 export default function Intro() {
   return (
     <>
-        <h2>CIAO! I&apos;M OJUS<span className="animate-caret-blink">.</span></h2>
-        <p>i'm a computer science undergrad <Link href="https://ptu.ac.in/">@punjab technical university</Link>, {calculateAge()} y/o, from <a href="https://panipat.gov.in/">panipat (india)</a>.<br />
-        <br/>
+      <h2>
+        CIAO! I&apos;M OJUS<span className="animate-caret-blink">.</span>
+      </h2>
+      <p>
+        i'm a computer science undergrad{" "}
+        <Link href="https://ptu.ac.in/">@punjab technical university</Link>,{" "}
+        {calculateAge()} y/o, from{" "}
+        <a href="https://panipat.gov.in/">panipat (india)</a>.<br />
+        <br />
         reach out:{" "}
         <Link
           href="mailto:ojusxe@gmail.com"
@@ -23,18 +29,16 @@ export default function Intro() {
         <div className="">
           <span className="flex md:flex-row flex-col gap-1 md:gap-3 pt-2">
             {socials.map(({ icon: Icon, label, href }) => (
-              <div key={label} className="flex items-center">[
-               {" "} <Icon /> {" "}
-              ]
-              {" "}
-              <Link
-                key={label}
-                href={href}
-                target="_blank"
-                className="flex items-center transition-colors gap-2"
-              >
-               <span className="">{label}</span> 
-              </Link>
+              <div key={label} className="flex items-center">
+                [ <Icon /> ]{" "}
+                <Link
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  className="flex items-center transition-colors gap-2"
+                >
+                  <span className="">{label}</span>
+                </Link>
               </div>
             ))}
           </span>

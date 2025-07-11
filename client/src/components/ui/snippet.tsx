@@ -9,13 +9,11 @@ function DefaultButton({
   onClick,
   absolute,
   disabled,
-  
 }: {
   children: React.ReactNode;
   onClick: () => void;
   absolute?: boolean;
   disabled?: boolean;
-  
 }) {
   return (
     <Button
@@ -32,7 +30,15 @@ function DefaultButton({
   );
 }
 
-export function Snippet({ children, title, className }: { children: React.ReactNode; title?: string, className?: string }) {
+export function Snippet({
+  children,
+  title,
+  className,
+}: {
+  children: React.ReactNode;
+  title?: string;
+  className?: string;
+}) {
   const [open, setOpened] = useState(false);
 
   return (

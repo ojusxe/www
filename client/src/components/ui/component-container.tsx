@@ -1,6 +1,12 @@
 import { cn } from "../../lib/utils";
 
-export default function ComponentContainer({ children, className }: { children: React.ReactNode; className?: string }) {
+export default function ComponentContainer({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <div
       className={cn(

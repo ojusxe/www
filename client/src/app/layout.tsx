@@ -58,24 +58,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetBrainsMono.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetBrainsMono.variable} antialiased`}
+    >
       <head>
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="font-inter bg-background text-foreground relative w-full min-h-screen background">
         <ThemeProvider>
-          <Script 
+          <Script
             src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"
             strategy="beforeInteractive"
           />
           <main className="flex flex-col w-full h-full max-w-xl mx-auto justify-start min-h-screen px-4 md:px-0">
             <Header />
-            <Container>
-              {children}
-            </Container>
+            <Container>{children}</Container>
           </main>
           <Footer />
-          <div id="ascii-display" aria-hidden="true" className="ascii-display opacity"></div>
+          <div
+            id="ascii-display"
+            aria-hidden="true"
+            className="ascii-display opacity"
+          ></div>
         </ThemeProvider>
       </body>
     </html>
