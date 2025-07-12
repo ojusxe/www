@@ -1,11 +1,12 @@
+import { calculateAge } from "@/lib/utils";
+
 const config = {
-  SITE_NAME: "ojus",
+  SITE_NAME: "ojus -- dev",
   SITE_DESCRIPTION:
-    "ojus, 20y/o, developer, surrealism digiart, basketball U21.",
+    `ojus, ${calculateAge()}y/o, developer, surrealism digiart, basketball U21.`,
   MAIN_BRANCH: "main",
   SITE_URL: "https://ojus.fyi",
   HEADER: {
-    homepage: "/",
     resources: "/resources",
     dreamspace: "/dreamspace",
   },

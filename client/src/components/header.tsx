@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./theme-toggle";
+import Image from "next/image";
 
 declare global {
   interface Window {
@@ -163,7 +164,14 @@ export default function Header() {
     >
       <div>
         <Link href="" onClick={handleClick} className="inline-block mr-2">
-          <div className="h-6 w-6 aspect-square border border-white bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div>
+          {/* <div className="h-6 w-6 aspect-square border border-white bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div> */}
+          <Image
+            src="/icon-ojus.png"
+            alt="xiao fei"
+            width={48}
+            height={48}
+            className="h-10 w-10 aspect-square  hover:opacity-100 opacity-80 cursor-pointer"
+          />
         </Link>
         <ThemeToggle />
       </div>
