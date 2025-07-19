@@ -53,21 +53,21 @@ const socials = [
   {
     icon: FaGithub,
     label: "GITHUB",
-    href: "https://github.com/ojuss",
+    href: "https://github.com/ojusxe",
   },
   {
     icon: FaXTwitter,
     label: "TWITTER",
-    href: "https://x.com/ojussw",
+    href: "https://x.com/ojusxe",
   },
   {
     icon: FaLinkedin,
     label: "LINKEDIN",
-    href: "https://linkedin.com/in/ojuss",
+    href: "https://linkedin.com/in/ojusxe",
   },
   {
     icon: IoDocument,
     label: "RESUME",
-    href: "/ojusmarchcvv.pdf",
+    href: "/ojusjulycv.pdf",
   },
 ];

@@ -124,12 +124,12 @@ export default function PastProjects() {
           height={450}
           className="rounded-sm"
         />
-        <Link href="https://github.com/ojuss/gemini-go" target="_blank">
+        <Link href="https://github.com/ojusxe/gemini-go" target="_blank">
           <GitHubLogoIcon className="inline-block mr-2" />
           source
         </Link>
         <Link
-          href="https://github.com/ojuss/stripe-payment-intent"
+          href="https://github.com/ojusxe/stripe-payment-intent"
           target="_blank"
         >
           <GitHubLogoIcon className="inline-block mx-2" />

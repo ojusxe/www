@@ -8,7 +8,7 @@ export default function CurrentProjects() {
           monorepo w/ 300K monthly visits
         </li>
         <li>
-          <a href="https://github.com/ojuss/goat-notes">goat-notes</a> - the
+          <a href="https://github.com/ojusxe/goat-notes">goat-notes</a> - the
           goat of noteapps
         </li>
         <li>

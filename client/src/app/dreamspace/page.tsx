@@ -4,7 +4,7 @@ import { DreamSpace } from "./dreamspace"
 import MdxLayout from "../../components/ui/mdx-layout"
 
 export const metadata: Metadata = {
-  title: "DREAMSPACE",
+  title: "dreamspace",
   description: "some visual moments captured along the way.",
 }
 

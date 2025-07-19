@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
 
 export const metadata: Metadata = {
-  title: "RESOURCES",
+  title: "resources",
   description:
     "links i've found interesting, helpful, inspiring or cool (firefox bookmarks).",
 };
