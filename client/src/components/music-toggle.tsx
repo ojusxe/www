@@ -16,19 +16,17 @@ export default function MusicToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Create audio element
+
     audioRef.current = new Audio();
-    audioRef.current.volume = 0.2; // Set default volume to 20%
+    audioRef.current.volume = 0.8; 
     audioRef.current.loop = false;
 
-    // Handle track end - play next random track
     const handleTrackEnd = () => {
       if (isPlaying) {
         playRandomTrack();
       }
     };
 
-    // Handle audio errors
     const handleError = () => {
       console.warn("Audio file not found or failed to load");
       setHasError(true);

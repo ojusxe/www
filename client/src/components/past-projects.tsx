@@ -15,16 +15,14 @@ export default function PastProjects() {
         </p>
 
         <p>
-          team #22, my awesome teamates
+          team #22, my awesome teamates{" "}
           <a href="https://nav9v.me" target="_blank">
-            {" "}
-            nav9v{" "}
-          </a>
-          &&
+            nav9v
+          </a>{" "}
+          &&{" "}
           <a href="https://iamnikitaa.github.io/" target="_blank">
-            {" "}
-            nikita{" "}
-          </a>
+            nikita
+          </a>{" "}
         </p>
 
         <Image

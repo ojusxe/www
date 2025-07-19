@@ -225,11 +225,12 @@ body:not(.background) main {
 }
 
 .blue-theme a {
-  color: #ffffff !important;
+  color: #ff6363 !important; /* Light yellow for visibility */
+  text-underline-offset: 2px !important;
 }
 
 .blue-theme a:hover {
-  color: #e0e0e0 !important;
+  text-decoration: underline !important;
 }
 
 .blue-theme .border {
@@ -307,4 +308,31 @@ body:not(.background) main {
 
 .blue-theme .hover\:border-gray-400:hover {
   border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Music Toggle Blue Theme Compatibility */
+.blue-theme button[aria-label*="Music"] {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.blue-theme button[aria-label*="Music"]:hover {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.blue-theme button[aria-label*="Music"] .text-red-400 {
+  color: #ff6363 !important; /* Lighter red for error state */
+}
+
+.blue-theme button[aria-label*="Music"] .bg-green-500 {
+  background-color: #66ff66 !important; /* Brighter green for playing bars */
+}
+
+.blue-theme button[aria-label*="Music"] .border-l-blue-600 {
+  border-left-color: #ffffff !important; /* White play triangle */
+}
+
+.blue-theme button[aria-label*="Music"]:hover .border-l-blue-600 {
+  border-left-color: #e0e0e0 !important; /* Slightly dimmed white on hover */
 }
