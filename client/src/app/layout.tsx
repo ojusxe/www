@@ -7,6 +7,7 @@ import { ThemeProvider } from "../contexts/theme-context";
 import config from "../constants/config";
 import "./globals.css";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -73,7 +74,10 @@ export default function RootLayout({
           />
           <main className="flex flex-col w-full h-full max-w-xl mx-auto justify-start min-h-screen px-4 md:px-0">
             <Header />
-            <Container>{children}</Container>
+            <Container>
+              {children}
+              <Analytics />
+            </Container>
           </main>
           <Footer />
           <div
