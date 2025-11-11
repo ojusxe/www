@@ -1,20 +1,15 @@
-import { client } from '../../lib/sanity'
+import { publicClient } from '../../lib/sanity'
 import { Metadata } from "next"
 import { DreamSpace } from "./dreamspace"
 import MdxLayout from "../../components/ui/mdx-layout"
+import { GalleryItem } from "../../types/sanity"
 
 export const metadata: Metadata = {
   title: "dreamspace",
   description: "some visual moments captured along the way.",
 }
 
-type GalleryItem = {
-  _id: string
-  caption: string
-  imageUrl: string
-  width: number
-  height: number
-}
+export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function DreamspaceGalleryPage() {
   let galleryItems: GalleryItem[] = []
@@ -29,9 +24,11 @@ export default async function DreamspaceGalleryPage() {
       "height": media.asset->metadata.dimensions.height
     }`
 
-    galleryItems = await client.fetch(query)
+    galleryItems = await publicClient.fetch(query)
   } catch (err) {
-    console.error('Error fetching gallery items:', err)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching gallery items:', err)
+    }
     error = err instanceof Error ? err.message : 'Failed to fetch gallery items'
   }
 

@@ -5,14 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { HiRefresh } from "react-icons/hi";
-
-interface GalleryItem {
-  _id: string;
-  imageUrl: string;
-  caption: string;
-  width: number;
-  height: number;
-}
+import { GalleryItem } from "../../types/sanity";
 
 interface GalleryProps {
   items: GalleryItem[];

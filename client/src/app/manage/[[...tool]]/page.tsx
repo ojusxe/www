@@ -3,9 +3,14 @@
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../../sanity.config'
 
-// Force this route to use Node.js runtime instead of Edge
+/* can't use edge, total size of the studio on deployment is ~2.39MB
+ only 1MB is allowed on free tier */
 export const runtime = 'nodejs'
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return (
+    <div className="h-screen w-full">
+      <NextStudio config={config} />
+    </div>
+  )
 }
