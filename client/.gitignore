@@ -51,5 +51,8 @@ worker-configuration.d.ts
 .wrangler
 .wrangler/*
 
+# sanity
+.sanity
+
 /public/assets/dris-frames-alt-backup
 /public/assets/dris-frames-alt-backup-original
