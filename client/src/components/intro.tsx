@@ -10,7 +10,7 @@ export default function Intro() {
   return (
     <>
       <h2>
-        CIAO! I&apos;M OJUS<span className="animate-caret-blink">.</span>
+        CIAO! I&apos;M OJUS<span className="">.</span>
       </h2>
       <p>
         i'm a computer science undergrad{" "}
