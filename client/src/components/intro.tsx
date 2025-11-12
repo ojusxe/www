@@ -68,6 +68,6 @@ const socials = [
   {
     icon: IoDocument,
     label: "RESUME",
-    href: "/ojusjulycv.pdf",
+    href: "https://drive.google.com/file/d/16p7Lvhd7_pIIkYJ7XETOCzD1hc_ffFrI/view?usp=sharing",
   },
 ];
