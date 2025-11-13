@@ -1,26 +1,27 @@
 export default function Achievements() {
   return (
     <>
-      <h4>A FEW ACHIEVEMENTS:</h4>
+      <h4>ACHIEVEMENTS I'M PROUD OF:</h4>
       <ul>
-        <li>yt channel with 200k subscribers and 160m views</li>
         <li>
-          $50k/month{" "}
-          <a href="https://web.archive.org/web/20230110214901/https://www.headfoams.pro/">
-            ecom store
+          won{" "}
+          <a href="https://financialservices.gov.in/beta/en/psb-hackathon">
+            PSB hackathon series
           </a>{" "}
-          selling fake airpod maxes
+          by building SAFE app -{" "}
+          <a href="https://rupeebee.vercel.app">RupeeBee</a> for punjab & sind
+          bank
         </li>
         <li>
-          won the congressional app challenge at{" "}
-          <a href="https://www.congressionalappchallenge.us/2018-mn3/">10</a>
+          got invited and presented banking solution at{" "}
+          <a href="https://www.globalfintechfest.com/gff-hackathons/psb-hackathon">
+            global fintech fest '25
+          </a>{" "}
+          in mumbai
         </li>
         <li>
-          hacked a $100m organization (rhymes with{" "}
-          <a href="https://www.deca.org/">deca</a>)
-        </li>
-        <li>
-          sold <a href="https://lira.study">an app</a> for below minimum wage
+          got into unversity's basketball team & went to the inter-college tour
+          '24
         </li>
       </ul>
     </>

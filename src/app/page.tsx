@@ -4,6 +4,7 @@ import Experience from "../components/experience";
 import PastProjects from "../components/past-projects";
 import MdxLayout from "../components/ui/mdx-layout";
 import Intro from "../components/intro";
+import Achievements from "@/components/achievements";
 
 export const revalidate = 60 // Revalidate every 60 seconds
 
@@ -13,6 +14,7 @@ export default async function HomePage() {
       <Intro />
       <CurrentProjects />
       <Experience />
+      <Achievements />
       <PastProjects />
       <TLDR />
     </MdxLayout>
