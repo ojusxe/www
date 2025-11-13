@@ -53,9 +53,6 @@ importers:
       next-sanity:
         specifier: ^11.6.5
         version: 11.6.5(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.12.1)(@sanity/icons@3.7.4(react@19.1.0))(@sanity/types@4.14.2(@types/react@19.1.2))(next@15.2.1(@babel/core@7.28.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react-is@19.2.0)(react@19.1.0)(sanity@4.14.2(@emotion/is-prop-valid@1.2.2)(@portabletext/sanity-bridge@1.2.2(@sanity/schema@4.14.2(@types/react@19.1.2)(debug@4.4.3))(@sanity/types@4.14.2(@types/react@19.1.2)(debug@4.4.3)))(@types/node@20.17.30)(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(immer@10.2.0)(jiti@2.6.1)(lightningcss@1.29.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(yaml@2.8.0))(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
-      pako:
-        specifier: ^2.1.0
-        version: 2.1.0
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -87,9 +84,6 @@ importers:
       '@types/node':
         specifier: ^20.17.30
         version: 20.17.30
-      '@types/pako':
-        specifier: ^2.0.3
-        version: 2.0.3
       '@types/react':
         specifier: ^19.1.2
         version: 19.1.2
@@ -2349,9 +2343,6 @@ packages:
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
-  '@types/pako@2.0.3':
-    resolution: {integrity: sha512-bq0hMV9opAcrmE0Byyo0fY3Ew4tgOevJmQ9grUhpXQhYfyLJ1Kqg3P33JT5fdbT2AjeAjR51zqqVjAL/HMkx7Q==}
-
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
 
@@ -4472,9 +4463,6 @@ packages:
 
   pako@0.2.9:
     resolution: {integrity: sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==}
-
-  pako@2.1.0:
-    resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
 
   parallel-transform@1.2.0:
     resolution: {integrity: sha512-P2vSmIu38uIlvdcU7fDkyrxj33gTUy/ABO5ZUbGowxNCopBq/OoD42bP4UmMrJoPyk4Uqf0mu3mtWBhHCZD8yg==}
@@ -8449,8 +8437,6 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@types/pako@2.0.3': {}
-
   '@types/prismjs@1.26.5': {}
 
   '@types/react-dom@19.1.2(@types/react@19.1.2)':
@@ -10786,8 +10772,6 @@ snapshots:
   package-json-from-dist@1.0.1: {}
 
   pako@0.2.9: {}
-
-  pako@2.1.0: {}
 
   parallel-transform@1.2.0:
     dependencies:

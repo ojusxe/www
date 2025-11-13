@@ -8,23 +8,36 @@ import ThemeToggle from "./theme-toggle";
 import MusicToggle from "./music-toggle";
 import Image from "next/image";
 
-declare global {
-  interface Window {
-    pako: any;
-  }
-}
-
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const [isAnimating, setIsAnimating] = useState(false);
-  const [currentFrame, setCurrentFrame] = useState(7);
+  const [currentFrame, setCurrentFrame] = useState(1);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
   const [hasPlayedIntro, setHasPlayedIntro] = useState(false);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const frameCache = useRef<Map<number, string>>(new Map());
   const frameRate = 20;
-  const totalFrames = 106;
-  const path = "/ojus-frames-alt"; // Check if intro should play and start immediately
+  const totalFrames = 50;
+  const path = "/ojus-ascii-frames";
+  
+  // Preload first few frames for instant animation start
+  useEffect(() => {
+    const preloadFrames = async () => {
+      // Preload first 10 frames for instant start
+      for (let i = 1; i <= Math.min(10, totalFrames); i++) {
+        const fileName = `${path}/frame-${i.toString().padStart(4, "0")}.txt`;
+        try {
+          const response = await fetch(fileName);
+          const text = await response.text();
+          frameCache.current.set(i, text);
+        } catch (error) {
+          console.error(`Failed to preload frame ${i}:`, error);
+        }
+      }
+    };
+    preloadFrames();
+  }, []); // Check if intro should play and start immediately
   useEffect(() => {
     const isRootRoute = pathname === "/";
     const playedIntro = sessionStorage.getItem("hasPlayedIntro");
@@ -59,27 +72,26 @@ export default function Header() {
     }
   }, [pathname, hasPlayedIntro, isFirstLoad]);
 
-  const decompressAsciiArt = (compressedBase64: string) => {
-    if (!window.pako) return "";
-
-    const compressedData = atob(compressedBase64);
-    const compressedArray = new Uint8Array(compressedData.length);
-    for (let i = 0; i < compressedData.length; i++) {
-      compressedArray[i] = compressedData.charCodeAt(i);
-    }
-    const decompressedArray = window.pako.inflate(compressedArray);
-    return new TextDecoder().decode(decompressedArray);
-  };
-
   const loadFrame = async (frameNumber: number) => {
+    // Check cache first
+    if (frameCache.current.has(frameNumber)) {
+      const asciiDisplay = document.getElementById("ascii-display");
+      if (asciiDisplay) {
+        asciiDisplay.innerText = frameCache.current.get(frameNumber)!;
+      }
+      return;
+    }
+
     const fileName = `${path}/frame-${frameNumber
       .toString()
-      .padStart(6, "0")}.txt.gz`;
+      .padStart(4, "0")}.txt`;
 
     try {
       const response = await fetch(fileName);
-      const compressedBase64 = await response.text();
-      const asciiArt = decompressAsciiArt(compressedBase64);
+      const asciiArt = await response.text();
+      
+      // Cache the frame
+      frameCache.current.set(frameNumber, asciiArt);
 
       const asciiDisplay = document.getElementById("ascii-display");
       if (asciiDisplay) {
@@ -123,7 +135,7 @@ export default function Header() {
         if (body) body.classList.add("background");
         if (main) main.classList.remove("opacity");
         // Reset state
-        setCurrentFrame(7);
+        setCurrentFrame(1);
         setIsAnimating(false);
         setIsFirstLoad(false);
         setHasPlayedIntro(true);
