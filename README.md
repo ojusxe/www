@@ -1,6 +1,6 @@
-# ojus.fyi
+## ojus.fyi
 
-My personal corner of the internet where I dump thoughts, projects, and occasionally good ideas.
+my personal corner of the internet where i dump thoughts, digital art, projects, and occasionally good ideas
 
 ## what's here
 
@@ -9,11 +9,11 @@ My personal corner of the internet where I dump thoughts, projects, and occasion
 - random musings and links
 - probably too much anime soundtrack integration
 
-## tech stuff
+### built with
 
 next.js, tailwind, sanity cms, and whatever else seemed like a good idea at 3am
 
-## local dev
+### local dev
 
 ```bash
 pnpm install

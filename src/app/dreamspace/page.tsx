@@ -1,6 +1,6 @@
 import { publicClient } from '../../lib/sanity'
 import { Metadata } from "next"
-import { DreamSpace } from "./dreamspace"
+import { DreamSpace } from "../../components/dreamspace"
 import MdxLayout from "../../components/ui/mdx-layout"
 import { GalleryItem } from "../../types/sanity"
 
