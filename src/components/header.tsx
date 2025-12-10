@@ -21,6 +21,7 @@ export default function Header() {
   const totalFrames = 50;
   const path = "/ojus-ascii-frames";
   
+  // generate your frames : https://howwasyourdayhoney.vercel.app
   // Preload first few frames for instant animation start
   useEffect(() => {
     const preloadFrames = async () => {

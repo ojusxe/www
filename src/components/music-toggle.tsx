@@ -2,11 +2,13 @@
 
 import { useState, useRef, useEffect } from "react";
 
-// Add your music files to /public/music/ directory
+// also could serve the music with sanity cdn in future
+// idea: maybe add a full music player UI
+// cool audio components: https://ui.elevenlabs.io/
 const musicTracks = [
   "/music/crystalized.mp3",
-  "/music/Gangsta%20Soundrack%20__%20Sing%20A_0.mp3",
-  "/music/Gangsta%20Soundrack%20__%20Sing%20Twilights.mp3",
+  "/music/gangsta.mp3",
+  "/music/twilights.mp3",
 ];
 
 export default function MusicToggle() {
@@ -105,13 +107,11 @@ export default function MusicToggle() {
     if (!audioRef.current) return;
 
     if (isPlaying) {
-      // Stop music
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       setIsPlaying(false);
       console.log("Music stopped");
     } else {
-      // Start playing random track
       setHasError(false);
       console.log("Starting music...");
       playRandomTrack();
@@ -179,7 +179,6 @@ export default function MusicToggle() {
         }`}
       >
         <div className="relative ml-0.5">
-          {/* Simple play triangle */}
           <div className="w-0 h-0 border-l-[6px] border-l-blue-600 border-y-[4px] group-hover:border-l-blue-800"></div>
         </div>
       </div>
