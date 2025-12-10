@@ -179,11 +179,11 @@ export default function Header() {
         <Link href="" onClick={handleClick} className="inline-block">
           {/* <div className="h-6 w-6 aspect-square border border-white bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div> */}
           <Image
-            src="/icon-ojus.png"
-            alt="xiao fei"
-            width={48}
-            height={48}
-            className="h-10 w-10 aspect-square  hover:opacity-100 opacity-80 cursor-pointer"
+            src="/ojusxe.webp"
+            alt="insignia"
+            width={28}
+            height={28}
+            className="h-6 w-6 aspect-square opacity-80 cursor-pointer pointer-events-none"
           />
         </Link>
         <ThemeToggle />

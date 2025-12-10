@@ -4,7 +4,6 @@ import { cn } from "../lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { HiRefresh } from "react-icons/hi";
 import { GalleryItem } from "../types/sanity";
 
 interface GalleryProps {
