@@ -7,6 +7,7 @@ const config = {
   MAIN_BRANCH: "main",
   SITE_URL: "https://ojus.fyi",
   HEADER: {
+    projects: "/projects",
     resources: "/resources",
     dreamspace: "/dreamspace",
   },

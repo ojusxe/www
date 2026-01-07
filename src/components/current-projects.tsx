@@ -1,5 +1,6 @@
 import { publicClient } from "@/lib/sanity";
 import { CurrentProject } from "@/types/sanity";
+import Link from "next/link";
 
 async function getCurrentProjects(): Promise<CurrentProject[]> {
   const query = `*[_type == "currentProject"] | order(order asc) {
@@ -31,6 +32,11 @@ export default async function CurrentProjects() {
           </li>
         ))}
       </ul>
+      <p className="text-xs font-mono mt-2">
+        <Link href="/projects" className="hover:underline">
+          view all past projects →
+        </Link>
+      </p>
     </>
   );
 }

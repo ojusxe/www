@@ -15,7 +15,6 @@ export default async function HomePage() {
       <CurrentProjects />
       <Experience />
       <Achievements />
-      <PastProjects />
       <TLDR />
     </MdxLayout>
   );
