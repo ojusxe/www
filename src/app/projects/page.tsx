@@ -35,12 +35,14 @@ const projects: Project[] = [
   {
     title: "PAGEO.ME",
     description: [
-      "a scalable, all-in-one link management platform using next.js, typescript, and custom tailwind css, integrating drizzle orm and xata (postgresql) for robust data handling.",
-      "implemented secure authentication with betterauth, framer motion animations, and vercel deployment, growing the active user base to 60+ through continuous ux improvements.",
+      "all-in-one link management platform using next.js, typescript, and custom tailwind css, integrating drizzle orm growing the active user base to 60+ through continuous ux improvements.",
     ],
-    teammates: [],
+    teammates: [      
+      { name: "sanyam", url: "https://sanyam.xyz" },
+      { name: "aviral", url: "https://aviral.xyz/" },
+    ],
     image: {
-      src: "/projects/pageo.webp",
+      src: "/projects/pageo.png",
       alt: "pageo.me link-in-bio platform",
     },
     links: [
@@ -56,11 +58,18 @@ const projects: Project[] = [
     description: [
       "a finance awareness cross-platform app that prevents fraud, helps manage personal budget, and spreads financial awareness.",
       "ranked 1st in the 1st edition of psb hackathon series out of 200+ teams, organized by punjab & sind bank.",
-      "selected among the top 11 finalists out of 7,000+ teams at the 6th edition of gff – psb series hackathon 2025, jio world convention center, mumbai.",
+      "selected among the top 11 finalists out of 7,000+ teams at the 6th edition of gff - psb series hackathon 2025, jio world convention center, mumbai.",
     ],
-    teammates: [],
+    teammates: [      
+      { name: "nav9v", url: "https://nav9v.me" },
+      { name: "nikita", url: "https://iamnikitaa.github.io/" },
+      {
+        name: "priyam",
+        url: "https://priyamsri.vercel.app/",
+      }
+    ],
     image: {
-      src: "/projects/rupeebee.webp",
+      src: "/projects/rupeebee.png",
       alt: "rupeebee finance app",
     },
     links: [
@@ -76,9 +85,11 @@ const projects: Project[] = [
     description: [
       "enter lumo's playground where only hands allowed. use gestures to control 3d characters in an interactive playground environment.",
     ],
-    teammates: [],
+    teammates: [{
+      name: "noordeep", url: "https://github.com/noorhanspal"
+    }],
     image: {
-      src: "/projects/lumo.webp",
+      src: "/projects/lumo-playground.jpg",
       alt: "lumo playground gesture control",
     },
     links: [
@@ -129,7 +140,7 @@ const projects: Project[] = [
       { name: "nikita", url: "https://www.github.com/iamnikitaa" },
       {
         name: "priyam",
-        url: "https://portfolio-priyam-srivastavas-projects-a9e142b7.vercel.app/",
+        url: "https://priyam-sri.vercel.app/",
       },
     ],
     image: {
