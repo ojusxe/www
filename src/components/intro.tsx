@@ -68,6 +68,6 @@ const socials = [
   {
     icon: IoDocument,
     label: "RESUME",
-    href: "https://drive.google.com/file/d/16p7Lvhd7_pIIkYJ7XETOCzD1hc_ffFrI/view?usp=sharing",
+    href: "https://drive.google.com/file/d/1f4YXh2QCQdbWx-j72nVZMJQtrPfK1UQi/view?usp=sharing",
   },
 ];
