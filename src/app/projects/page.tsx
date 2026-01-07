@@ -74,7 +74,7 @@ const projects: Project[] = [
   {
     title: "LUMO PLAYGROUND",
     description: [
-      "use gestures to control 3d characters in an interactive playground environment.",
+      "enter lumo's playground where only hands allowed. use gestures to control 3d characters in an interactive playground environment.",
     ],
     teammates: [],
     image: {
@@ -86,7 +86,11 @@ const projects: Project[] = [
         url: "https://github.com/ojusxe/lumo-playground",
         label: "source",
         type: "github",
-      },
+      }, {
+        url: "https://ojusxe.github.io/lumo-playground/",
+        label: "visit",
+        type: "external",
+      }
     ],
   },
   {
