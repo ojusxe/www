@@ -51,6 +51,16 @@ const projects: Project[] = [
         label: "visit",
         type: "external",
       },
+      {
+        url: "https://www.producthunt.com/products/pageo-me",
+        label: "product hunt",
+        type: "external"
+      }, 
+      {
+        url: "https://peerlist.io/sanyamm/project/pageome",
+        label: "peerlist",
+        type: "external"
+      }
     ],
   },
   {

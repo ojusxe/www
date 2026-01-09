@@ -15,8 +15,8 @@ export default function Intro() {
         CIAO! I&apos;M OJUS<span className="">.</span>
       </h2>
       <p>
-        i'm a computer science undergrad{" "}
-        <Link href="https://ptu.ac.in/">@punjab technical university</Link>,{" "}
+        i'm a frontend-first full stack developer and final semester CS undergrad{" "}
+        <Link href="https://ptu.ac.in/">@ punjab technical university</Link>,{" "}
         {calculateAge()} y/o, from{" "}
         <a href="https://panipat.gov.in/">panipat, HR (india)</a>.<br />
         <br />

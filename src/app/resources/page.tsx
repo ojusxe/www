@@ -42,7 +42,7 @@ export default async function ResourcesPage() {
   return (
     <MdxLayout>
       <h2>RESOURCES</h2>
-      <h4>LAST UPDATED {formattedDate}</h4>
+      <h5>LAST UPDATED {formattedDate}</h5>
 
       <ul>
         {resources.map((resource) => (
