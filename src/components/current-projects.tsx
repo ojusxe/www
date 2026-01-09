@@ -32,7 +32,7 @@ export default async function CurrentProjects() {
           </li>
         ))}
       </ul>
-      <p className="text-sm font-mono mt-2">
+      <p className="text-xs md:text-sm font-mono mt-2">
         <Link href="/projects" className="hover:underline">
           view all past projects →
         </Link>
