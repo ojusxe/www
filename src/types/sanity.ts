@@ -23,4 +23,5 @@ export interface Resource {
   url: string;
   description: string;
   order?: number;
+  _updatedAt: string;
 }

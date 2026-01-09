@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "projects",
-  description: "a collection of projects i've worked on over the years.",
+  description: "a collection of projects i've worked on.",
 };
 
 interface ProjectLink {
@@ -35,14 +35,14 @@ const projects: Project[] = [
   {
     title: "PAGEO.ME",
     description: [
-      "all-in-one link management platform using next.js, typescript, and custom tailwind css, integrating drizzle orm growing the active user base to 60+ through continuous ux improvements.",
+      "all-in-one link management platform using next.js, typescript, and custom tailwind css, integrating drizzle orm growing the active user base to 100+ through continuous ux improvements.",
     ],
     teammates: [      
       { name: "sanyam", url: "https://sanyam.xyz" },
       { name: "aviral", url: "https://aviral.xyz/" },
     ],
     image: {
-      src: "/projects/pageo.png",
+      src: "/projects/pageo.webp",
       alt: "pageo.me link-in-bio platform",
     },
     links: [
@@ -69,7 +69,7 @@ const projects: Project[] = [
       }
     ],
     image: {
-      src: "/projects/rupeebee.png",
+      src: "/projects/rupeebee.webp",
       alt: "rupeebee finance app",
     },
     links: [
@@ -144,7 +144,7 @@ const projects: Project[] = [
       },
     ],
     image: {
-      src: "/projects/dumbaf.avif",
+      src: "/projects/dumbaf.webp",
       alt: "collabdoor and dumbaf",
     },
     links: [
@@ -169,7 +169,7 @@ const projects: Project[] = [
     ],
     teammates: [{ name: "sanyam", url: "https://sanyam.xyz" }],
     image: {
-      src: "/projects/gogo.webp",
+      src: "/projects/go.webp",
       alt: "gopher and go",
     },
     links: [

@@ -17,7 +17,8 @@ async function getResources(): Promise<Resource[]> {
     title,
     url,
     description,
-    order
+    order,
+    _updatedAt
   }`;
 
   return publicClient.fetch(query);
@@ -26,10 +27,22 @@ async function getResources(): Promise<Resource[]> {
 export default async function ResourcesPage() {
   const resources = await getResources();
 
+  // Get the most recent update date
+  const lastUpdated = resources.reduce((latest, resource) => {
+    const resourceDate = new Date(resource._updatedAt);
+    return resourceDate > latest ? resourceDate : latest;
+  }, new Date(0));
+
+  const formattedDate = lastUpdated.toLocaleDateString("en-US", {
+    month: "numeric",
+    day: "numeric",
+    year: "numeric",
+  });
+
   return (
     <MdxLayout>
       <h2>RESOURCES</h2>
-      <h4>UPDATED 5/27/2025</h4>
+      <h4>LAST UPDATED {formattedDate}</h4>
 
       <ul>
         {resources.map((resource) => (
