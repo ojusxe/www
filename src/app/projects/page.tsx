@@ -75,7 +75,7 @@ const projects: Project[] = [
     },
     links: [
       {
-        url: "https://hobb.vercel.app",
+        url: "https://hobby-scope.vercel.app",
         label: "visit",
         type: "external",
       },

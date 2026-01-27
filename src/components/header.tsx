@@ -172,7 +172,7 @@ export default function Header() {
 
   return (
     <header
-      className="flex justify-between font-mono items-start w-full py-4 text-gray-600"
+      className="flex justify-between font-mono w-full py-4 text-gray-600 items-center"
       id="top"
     >
       <div className="flex items-center gap-2">
@@ -187,8 +187,8 @@ export default function Header() {
         </Link>
         <ThemeToggle />
       </div>
-      <div className="flex items-center gap-4 ">
-        <div className="flex items-center gap-2 underline text-sm ">
+      <div className="flex items-center md:gap-4 gap-2.5">
+        <div className="flex items-center gap-2 underline md:text-sm text-xs">
           {Object.entries(config.HEADER).map(([key, value]) => (
             <Link href={value} key={key}>
               {key.toUpperCase()}
