@@ -21,23 +21,28 @@ export default function Header() {
   const path = "/ojus-ascii-frames";
   
   // generate your frames : https://howwasyourdayhoney.vercel.app
-  // Preload first few frames for instant animation start
+  // Preload ALL frames for smooth animation
   useEffect(() => {
     const preloadFrames = async () => {
-      // Preload first 10 frames for instant start
-      for (let i = 1; i <= Math.min(10, totalFrames); i++) {
+      // Preload all frames
+      const promises = [];
+      for (let i = 1; i <= totalFrames; i++) {
         const fileName = `${path}/frame-${i.toString().padStart(4, "0")}.txt`;
-        try {
-          const response = await fetch(fileName);
-          const text = await response.text();
-          frameCache.current.set(i, text);
-        } catch (error) {
-          console.error(`Failed to preload frame ${i}:`, error);
+        // if not in cache, fetch it
+        if (!frameCache.current.has(i)) {
+          promises.push(
+            fetch(fileName)
+              .then((res) => res.text())
+              .then((text) => frameCache.current.set(i, text))
+              .catch((e) => console.error(`Failed to preload frame ${i}`, e))
+          );
         }
       }
+      await Promise.all(promises);
     };
     preloadFrames();
-  }, []); // Check if intro should play and start immediately
+  }, []); 
+
   useEffect(() => {
     const isRootRoute = pathname === "/";
     const playedIntro = sessionStorage.getItem("hasPlayedIntro");
@@ -73,15 +78,16 @@ export default function Header() {
   }, [pathname, hasPlayedIntro, isFirstLoad]);
 
   const loadFrame = async (frameNumber: number) => {
+    const asciiDisplay = document.getElementById("ascii-display");
+    if (!asciiDisplay) return;
+
     // Check cache first
     if (frameCache.current.has(frameNumber)) {
-      const asciiDisplay = document.getElementById("ascii-display");
-      if (asciiDisplay) {
-        asciiDisplay.innerText = frameCache.current.get(frameNumber)!;
-      }
+      asciiDisplay.innerText = frameCache.current.get(frameNumber)!;
       return;
     }
 
+    // Fallback if not cached yet (should rarely happen if preloaded)
     const fileName = `${path}/frame-${frameNumber
       .toString()
       .padStart(4, "0")}.txt`;
@@ -92,18 +98,20 @@ export default function Header() {
       
       // Cache the frame
       frameCache.current.set(frameNumber, asciiArt);
-
-      const asciiDisplay = document.getElementById("ascii-display");
-      if (asciiDisplay) {
-        asciiDisplay.innerText = asciiArt;
-      }
+      asciiDisplay.innerText = asciiArt;
     } catch (error) {
       console.error("Failed to load frame:", error);
     }
   };
 
-  const playAnimation = () => {
+  const playAnimation = async () => {
     if (isAnimating) return;
+    
+    // Wait a tiny bit to ensure preloading has a head start if it's the very first load
+    // or ensure elements are ready
+    if (frameCache.current.size < 5) {
+        await new Promise(r => setTimeout(r, 100));
+    }
 
     setIsAnimating(true);
 
@@ -123,28 +131,27 @@ export default function Header() {
     if (body) body.classList.remove("background");
     if (main) main.classList.add("opacity");
 
-    let frame = currentFrame;
+    let frame = 1;
 
     const animate = () => {
-      loadFrame(frame);
-      frame++;
-
-      if (frame > totalFrames) {
-        // Hide animation
+      // If we are still animating
+      if (frame <= totalFrames) {
+        loadFrame(frame);
+        frame++;
+        animationRef.current = setTimeout(animate, frameRate);
+      } else {
+        // Animation complete
         if (asciiDisplay) asciiDisplay.classList.add("opacity");
         if (body) body.classList.add("background");
         if (main) main.classList.remove("opacity");
+        
         // Reset state
         setCurrentFrame(1);
         setIsAnimating(false);
         setIsFirstLoad(false);
         setHasPlayedIntro(true);
         if (themeColorMeta) themeColorMeta.content = "#ffffff";
-        return;
       }
-
-      setCurrentFrame(frame);
-      animationRef.current = setTimeout(animate, frameRate);
     };
 
     animate();
