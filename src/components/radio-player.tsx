@@ -7,6 +7,8 @@ const musicTracks = [
   { src: "/music/crystalized.mp3", title: "Crystalized" },
   { src: "/music/gangsta.mp3", title: "Gangsta" },
   { src: "/music/twilights.mp3", title: "Twilights" },
+  { src: "/music/luv-deluxe.mp3", title: "Luv Deluxe" },
+  { src: "/music/her.mp3", title: "Her" },
 ];
 
 export default function RadioPlayer() {
