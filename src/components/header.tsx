@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./theme-toggle";
-import MusicToggle from "./music-toggle";
 import Image from "next/image";
 
 export default function Header() {
@@ -178,7 +177,6 @@ export default function Header() {
     >
       <div className="flex items-center gap-2">
         <Link href="" onClick={handleClick} className="inline-block">
-          {/* <div className="h-6 w-6 aspect-square border border-white bg-custom hover:opacity-100 opacity-80 cursor-pointer"></div> */}
           <Image
             src="/ojusxe.webp"
             alt="insignia"
@@ -188,7 +186,6 @@ export default function Header() {
           />
         </Link>
         <ThemeToggle />
-        <MusicToggle />
       </div>
       <div className="flex items-center gap-4 ">
         <div className="flex items-center gap-2 underline text-sm ">

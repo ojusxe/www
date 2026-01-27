@@ -63,6 +63,29 @@ const projects: Project[] = [
       }
     ],
   },
+    {
+    title: "HOBBY SCOPE",
+    description: [
+      "Get a focused 5-8 technique plan tailored to your skill level. No more endless YouTube rabbit holes",
+      "Hobby Scope uses AI to create personalized learning plans for your hobbies, helping you get better at your hobbies without overwhelm",
+    ],
+    image: {
+      src: "/projects/hobby-scope.webp",
+      alt: "hobby scope",
+    },
+    links: [
+      {
+        url: "https://hobb.vercel.app",
+        label: "visit",
+        type: "external",
+      },
+      {
+        url: "https://github.com/ojusxe/hobby-scope",
+        label: "source",
+        type: "github"
+      }, 
+    ],
+  },
   {
     title: "RUPEEBEE",
     description: [
