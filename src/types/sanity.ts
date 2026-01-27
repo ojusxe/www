@@ -25,3 +25,10 @@ export interface Resource {
   order?: number;
   _updatedAt: string;
 }
+
+export interface MusicTrack {
+  _id: string;
+  title: string;
+  url: string;
+  _updatedAt: string;
+}

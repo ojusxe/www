@@ -1,7 +1,7 @@
 export default function Directory() {
   return (
     <>
-      <h4>DIRECTORY:</h4>
+      <h4>DIRECTORIES:</h4>
       <ul>
         {/* <li>
           <a href="/blogs">blogs</a>
@@ -10,16 +10,23 @@ export default function Directory() {
           <a href="/resources">resources</a>
         </li>
         <li>
-          <a href="/dreamspace">gallery</a>
+          <a href="/projects">past projects</a>
+        </li>
+        <li>
+          <a href="/dreamspace">dreamspace</a>
         </li>
         <li>
           <a href="/radio">radio</a>
+        </li>
+        <li>
+          <a href="/manage">manage</a> (only for ojus)
         </li>
       </ul>
     </>
   );
 }
 
+// need to keep this icon somewhere else; todo
 export function PageoIcon() {
   return (
     <svg

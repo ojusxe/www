@@ -3,16 +3,15 @@
 import { useState, useRef, useEffect } from "react";
 import { cn } from "../lib/utils";
 
-const musicTracks = [
-  { src: "/music/crystalized.mp3", title: "Crystalized" },
-  { src: "/music/gangsta.mp3", title: "Gangsta" },
-  { src: "/music/twilights.mp3", title: "Twilights" },
-  { src: "/music/luv-deluxe.mp3", title: "Luv Deluxe" },
-  { src: "/music/her.mp3", title: "Her" },
-];
+interface RadioPlayerProps {
+  initialTracks?: { title: string; url: string }[];
+}
 
-export default function RadioPlayer() {
+export default function RadioPlayer({ initialTracks = [] }: RadioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  
+  const musicTracks = initialTracks.map((t) => ({ src: t.url, title: t.title }));
+
   const [currentTrack, setCurrentTrack] = useState(0);
   const [hasError, setHasError] = useState(false);
   const [trackTitle, setTrackTitle] = useState("");

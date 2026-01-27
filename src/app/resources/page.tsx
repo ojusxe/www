@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
 import { publicClient } from "../../lib/sanity";
 import { Resource } from "../../types/sanity";
+import { formatDate } from "../../lib/utils";
 
 export const metadata: Metadata = {
   title: "resources",
-  description:
-    "links i've found interesting, helpful, inspiring or cool (firefox bookmarks).",
+  description: "links i've found interesting, helpful, inspiring or cool",
 };
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -27,22 +27,17 @@ async function getResources(): Promise<Resource[]> {
 export default async function ResourcesPage() {
   const resources = await getResources();
 
-  // Get the most recent update date
   const lastUpdated = resources.reduce((latest, resource) => {
     const resourceDate = new Date(resource._updatedAt);
     return resourceDate > latest ? resourceDate : latest;
   }, new Date(0));
 
-  const formattedDate = lastUpdated.toLocaleDateString("en-US", {
-    month: "numeric",
-    day: "numeric",
-    year: "numeric",
-  });
+  const lastUpdatedDate = formatDate(lastUpdated);
 
   return (
     <MdxLayout>
       <h2>RESOURCES</h2>
-      <h5>LAST UPDATED {formattedDate}</h5>
+      <h5>LAST UPDATED {lastUpdatedDate}</h5>
 
       <ul>
         {resources.map((resource) => (

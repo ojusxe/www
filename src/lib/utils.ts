@@ -16,3 +16,12 @@ export function calculateAge() {
   }
   return age;
 }
+
+export function formatDate(date: Date | string) {
+  const d = new Date(date);
+  return d.toLocaleDateString("en-US", {
+    month: "numeric",
+    day: "numeric",
+    year: "numeric",
+  });
+}

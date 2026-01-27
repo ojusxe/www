@@ -9,8 +9,8 @@ const config = {
   HEADER: {
     projects: "/projects",
     resources: "/resources",
-    dreamspace: "/dreamspace",
   },
 } as const;
 
 export default config;
+

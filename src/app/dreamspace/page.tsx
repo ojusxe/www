@@ -6,7 +6,7 @@ import { GalleryItem } from "../../types/sanity"
 
 export const metadata: Metadata = {
   title: "dreamspace",
-  description: "some visual moments captured along the way.",
+  description: "some visual moments captured along the way",
 }
 
 export const revalidate = 60 // Revalidate every 60 seconds
