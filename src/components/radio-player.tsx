@@ -81,6 +81,34 @@ export default function RadioPlayer() {
     }, 50);
   };
 
+  const playSpecificTrack = (index: number) => {
+    if (!audioRef.current) return;
+
+    // If clicking the currently playing track, stop/pause it (resetting like the main button)
+    if (isPlaying && currentTrack === index) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+      setTrackTitle("");
+      return;
+    }
+
+    // Play the selected track
+    setCurrentTrack(index);
+    setTrackTitle(musicTracks[index].title);
+    audioRef.current.src = musicTracks[index].src;
+    
+    setTimeout(() => {
+      audioRef.current?.play().then(() => {
+        setIsPlaying(true);
+        setHasError(false);
+      }).catch(() => {
+        setHasError(true);
+        setIsPlaying(false);
+      });
+    }, 50);
+  };
+
   const toggleMusic = () => {
     if (!audioRef.current) return;
 
@@ -97,12 +125,11 @@ export default function RadioPlayer() {
 
   return (
     <div className="flex flex-col items-center gap-8 w-full max-w-sm mx-auto">
-      {/* Main player button */}
       <button
         onClick={toggleMusic}
         className={cn(
           "relative flex items-center justify-center size-32 sm:size-40 rounded-none",
-          "border border-border bg-pink-100 dark:bg-pink-900/20",
+          "border border-border bg-pink-200 dark:bg-pink-900/20",
           "hover:border-foreground/40 hover:bg-pink-200 dark:hover:bg-pink-900/30",
           "transition-all duration-300 cursor-pointer overflow-hidden group",
           hasError && "opacity-50 cursor-not-allowed bg-red-100 dark:bg-red-900/20"
@@ -123,11 +150,11 @@ export default function RadioPlayer() {
 
         {/* Animated Bars (when PLAYING) */}
         {isPlaying && !hasError && (
-          <div className="flex items-end justify-center gap-1.5 h-12">
-            <div className="w-1.5 bg-green-500 dark:bg-green-400 animate-[bounce_1s_infinite] h-[40%]" />
-            <div className="w-1.5 bg-green-500 dark:bg-green-400 animate-[bounce_1.2s_infinite] h-[80%]" />
-            <div className="w-1.5 bg-green-500 dark:bg-green-400 animate-[bounce_0.6s_infinite] h-[50%]" />
-            <div className="w-1.5 bg-green-500 dark:bg-green-400 animate-[bounce_1s_infinite] h-[70%]" />
+          <div className="flex items-end justify-center gap-1.5 h-28 ">
+            <div className="w-[12px] bg-green-500 dark:bg-green-400 animate-pulse h-[40%]" />
+            <div className="w-[12px] bg-green-500 dark:bg-green-400 animate-pulse h-[80%]" />
+            <div className="w-[12px] bg-green-500 dark:bg-green-400 animate-pulse h-[50%]" />
+            <div className="w-[12px] bg-green-500 dark:bg-green-400 animate-pulse h-[70%]" />
           </div>
         )}
 
@@ -154,17 +181,18 @@ export default function RadioPlayer() {
       <div className="w-full text-center">
         <div className="flex flex-wrap justify-center gap-2">
           {musicTracks.map((track, index) => (
-             <div 
-               key={track.src} 
+             <button 
+               key={track.src}
+               onClick={() => playSpecificTrack(index)}
                className={cn(
-                 "text-xs px-2 py-1 border rounded-sm font-mono transition-colors",
+                 "text-xs px-2 py-1 border rounded-sm font-mono transition-colors cursor-pointer",
                  currentTrack === index && isPlaying 
                    ? "border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/10" 
-                   : "border-transparent text-muted-foreground"
+                   : "border-transparent text-muted-foreground hover:bg-muted/50"
                )}
              >
                 {track.title}
-             </div>
+             </button>
           ))}
         </div>
       </div>
