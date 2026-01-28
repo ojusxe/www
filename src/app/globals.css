@@ -148,7 +148,7 @@
   font-weight: bold;
   font-family: "Courier New", monospace;
   white-space: pre;
-  transition: all 0.25s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+  transition: opacity 0.25s cubic-bezier(0.57, 0.21, 0.69, 1.25);
   cursor: text;
   pointer-events: none;
   background-color: #4d5eff;
@@ -166,9 +166,21 @@
   cursor: auto !important;
 }
 
-/* Hide content initially until intro plays */
-body:not(.background) main {
-  opacity: 0;
+.dark .background {
+  background-color: oklch(0.141 0.005 285.823);
+}
+
+body {
+  background-color: #4d5eff;
+  transition: background-color 0.25s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+body.background {
+  background-color: white;
+}
+
+.dark body.background {
+  background-color: oklch(0.141 0.005 285.823);
 }
 
 /* Blue Theme Styles */

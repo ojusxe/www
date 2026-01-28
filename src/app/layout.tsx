@@ -63,9 +63,9 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="font-inter bg-background text-foreground relative w-full min-h-screen background">
+      <body className="font-inter bg-background text-foreground relative w-full min-h-screen">
         <ThemeProvider>
-          <main className="flex flex-col w-full h-full max-w-lg mx-auto justify-start min-h-screen px-4 md:px-0">
+          <main className="flex flex-col w-full h-full max-w-lg mx-auto justify-start min-h-screen px-4 md:px-0 opacity">
             <Header />
             <Container>
               {children}

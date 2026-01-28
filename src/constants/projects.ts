@@ -35,8 +35,8 @@ export const projects: Project[] = [
   {
     title: "HOBBY SCOPE",
     description: [
-      "Get a focused 5-8 technique plan tailored to your skill level. No more endless YouTube rabbit holes",
-      "Hobby Scope uses AI to create personalized learning plans for your hobbies, helping you get better at your hobbies without overwhelm",
+      "get a focused 5-8 technique plan tailored to your skill level. No more endless YouTube rabbit holes",
+      "hobby scope uses AI to create personalized learning plans for your hobbies, helping you get better at your hobbies without overwhelm",
     ],
     image: {
       src: "/projects/hobby-scope.webp",

@@ -3,33 +3,32 @@
 import config from "../constants/config";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import ThemeToggle from "./theme-toggle";
 import Image from "next/image";
+
+const frameRate = 30;
+const totalFrames = 50;
+const path = "/ojus-ascii-frames";
 
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const [isAnimating, setIsAnimating] = useState(false);
-  const [currentFrame, setCurrentFrame] = useState(1);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
   const [hasPlayedIntro, setHasPlayedIntro] = useState(false);
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const frameCache = useRef<Map<number, string>>(new Map());
-  const frameRate = 20;
-  const totalFrames = 50;
-  const path = "/ojus-ascii-frames";
+  const isInitialMount = useRef(true);
   
   // generate your frames : https://howwasyourdayhoney.vercel.app
-  // Preload ALL frames for smooth animation
+
+  // Preload all frames on mount
   useEffect(() => {
     const preloadFrames = async () => {
-      // Preload all frames
       const promises = [];
       for (let i = 1; i <= totalFrames; i++) {
-        const fileName = `${path}/frame-${i.toString().padStart(4, "0")}.txt`;
-        // if not in cache, fetch it
         if (!frameCache.current.has(i)) {
+          const fileName = `${path}/frame-${i.toString().padStart(4, "0")}.txt`;
           promises.push(
             fetch(fileName)
               .then((res) => res.text())
@@ -40,135 +39,103 @@ export default function Header() {
       }
       await Promise.all(promises);
     };
-    preloadFrames();
-  }, []); 
 
+    preloadFrames();
+  }, []);
+  
+  // Play animation - recursive setTimeout with async fallback
+  const playAnimation = useCallback(() => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+
+    const themeColorMeta = document.querySelector("meta[name='theme-color']") as HTMLMetaElement;
+    const asciiDisplay = document.getElementById("ascii-display");
+    const main = document.querySelector("main");
+    const body = document.body;
+
+    // Setup animation state
+    if (themeColorMeta) themeColorMeta.content = "#4d5eff";
+    if (asciiDisplay) asciiDisplay.classList.remove("opacity");
+    if (body) body.classList.remove("background");
+    if (main) main.classList.add("opacity");
+
+    let currentFrame = 1;
+
+    const animate = async () => {
+      let text = frameCache.current.get(currentFrame);
+
+      if (!text) {
+        try {
+          const fileName = `${path}/frame-${currentFrame.toString().padStart(4, "0")}.txt`;
+          const res = await fetch(fileName);
+          text = await res.text();
+          frameCache.current.set(currentFrame, text);
+        } catch (e) {
+          console.error(`Failed to load frame ${currentFrame}`, e);
+        }
+      }
+
+      if (asciiDisplay && text) {
+        asciiDisplay.innerText = text;
+      }
+      
+      currentFrame++;
+
+      if (currentFrame > totalFrames) {
+        // Animation complete
+        if (asciiDisplay) asciiDisplay.classList.add("opacity");
+        if (body) body.classList.add("background");
+        if (main) main.classList.remove("opacity");
+        if (themeColorMeta) themeColorMeta.content = "#ffffff";
+        setIsAnimating(false);
+        setHasPlayedIntro(true);
+        return;
+      }
+
+      animationRef.current = setTimeout(animate, frameRate);
+    };
+
+    animate();
+  }, [isAnimating]);
+
+  // Initial mount - play animation immediately on root
   useEffect(() => {
+    if (!isInitialMount.current) return;
+    isInitialMount.current = false;
+
     const isRootRoute = pathname === "/";
     const playedIntro = sessionStorage.getItem("hasPlayedIntro");
     const body = document.body;
     const main = document.querySelector("main");
 
-    // Play animation if: 1) First time visitor OR 2) On root route (including refresh)
     if (!playedIntro || isRootRoute) {
-      // Start animation immediately
-      setIsFirstLoad(true);
-      // Ensure content is hidden during intro
+      // Ensure content is hidden FIRST
       if (body) body.classList.remove("background");
       if (main) main.classList.add("opacity");
+      
+      // Start animation immediately
       playAnimation();
 
-      // Only set sessionStorage if it's not already set (for first-time visitors)
       if (!playedIntro) {
         sessionStorage.setItem("hasPlayedIntro", "true");
       }
     } else {
-      // Subsequent visits to non-root pages - show content immediately
+      // Show content immediately for returning visitors on non-root
       setHasPlayedIntro(true);
-      setIsFirstLoad(false);
       if (body) body.classList.add("background");
       if (main) main.classList.remove("opacity");
     }
-  }, [pathname]); // Added pathname dependency to trigger on route changes
-  // Play animation when navigating to dreamspace (but not from root route refresh)
+  }, [pathname, playAnimation]);
+
+  // Play animation when navigating to dreamspace
   useEffect(() => {
-    if (pathname === "/dreamspace" && hasPlayedIntro && !isFirstLoad) {
+    if (pathname === "/dreamspace" && hasPlayedIntro && !isAnimating) {
       playAnimation();
     }
-  }, [pathname, hasPlayedIntro, isFirstLoad]);
+  }, [pathname, hasPlayedIntro, isAnimating, playAnimation]);
 
-  const loadFrame = async (frameNumber: number) => {
-    const asciiDisplay = document.getElementById("ascii-display");
-    if (!asciiDisplay) return;
-
-    // Check cache first
-    if (frameCache.current.has(frameNumber)) {
-      asciiDisplay.innerText = frameCache.current.get(frameNumber)!;
-      return;
-    }
-
-    // Fallback if not cached yet (should rarely happen if preloaded)
-    const fileName = `${path}/frame-${frameNumber
-      .toString()
-      .padStart(4, "0")}.txt`;
-
-    try {
-      const response = await fetch(fileName);
-      const asciiArt = await response.text();
-      
-      // Cache the frame
-      frameCache.current.set(frameNumber, asciiArt);
-      asciiDisplay.innerText = asciiArt;
-    } catch (error) {
-      console.error("Failed to load frame:", error);
-    }
-  };
-
-  const playAnimation = async () => {
-    if (isAnimating) return;
-    
-    // Wait a tiny bit to ensure preloading has a head start if it's the very first load
-    // or ensure elements are ready
-    if (frameCache.current.size < 5) {
-        await new Promise(r => setTimeout(r, 100));
-    }
-
-    setIsAnimating(true);
-
-    // Update theme color
-    const themeColorMeta = document.querySelector(
-      "meta[name='theme-color']"
-    ) as HTMLMetaElement;
-    if (themeColorMeta) themeColorMeta.content = "#4d5eff";
-
-    // Get elements
-    const asciiDisplay = document.getElementById("ascii-display");
-    const main = document.querySelector("main");
-    const body = document.body;
-
-    // Show animation
-    if (asciiDisplay) asciiDisplay.classList.remove("opacity");
-    if (body) body.classList.remove("background");
-    if (main) main.classList.add("opacity");
-
-    let frame = 1;
-
-    const animate = () => {
-      // If we are still animating
-      if (frame <= totalFrames) {
-        loadFrame(frame);
-        frame++;
-        animationRef.current = setTimeout(animate, frameRate);
-      } else {
-        // Animation complete
-        if (asciiDisplay) asciiDisplay.classList.add("opacity");
-        if (body) body.classList.add("background");
-        if (main) main.classList.remove("opacity");
-        
-        // Reset state
-        setCurrentFrame(1);
-        setIsAnimating(false);
-        setIsFirstLoad(false);
-        setHasPlayedIntro(true);
-        if (themeColorMeta) themeColorMeta.content = "#ffffff";
-      }
-    };
-
-    animate();
-  };
-
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    playAnimation();
-
-    // Only navigate if we're not already on the home page
-    if (pathname !== "/") {
-      setTimeout(() => {
-        router.push("/");
-      }, 200);
-    }
-  };
-
+  // Cleanup
   useEffect(() => {
     return () => {
       if (animationRef.current) {
@@ -176,6 +143,17 @@ export default function Header() {
       }
     };
   }, []);
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    playAnimation();
+
+    if (pathname !== "/") {
+      setTimeout(() => {
+        router.push("/");
+      }, 200);
+    }
+  };
 
   return (
     <header
