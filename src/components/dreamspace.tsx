@@ -3,7 +3,7 @@
 import { cn } from "../lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import { Cross2Icon } from "@radix-ui/react-icons";
+import { X } from "lucide-react";
 import { GalleryItem } from "../types/sanity";
 
 interface GalleryProps {
@@ -31,7 +31,7 @@ function GalleryModal({ item, isOpen, onClose }: ModalProps) {
           className="absolute top-6 right-3 z-10 p-2 text-pink-500 hover:text-custom/80 hover:scale-110 transition-all duration-200 bg-white/90 rounded-full shadow-sm"
           aria-label="Close modal"
         >
-          <Cross2Icon className="w-5 h-5" />
+          <X className="w-5 h-5" />
         </button>
 
         <div className="p-6 flex flex-col items-center">

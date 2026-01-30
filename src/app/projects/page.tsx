@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
 import Image from "next/image";
-import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons";
+import { Github, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 import  { projects } from "@/constants/projects";
 import { Project } from "@/types/projects";
@@ -288,9 +288,9 @@ function ProjectCard({ project }: { project: Project }) {
                 className="flex items-center gap-1.5 text-xs hover:underline"
               >
                 {link.type === "github" ? (
-                  <GitHubLogoIcon className="size-3.5" />
+                  <Github className="size-3.5" />
                 ) : (
-                  <Link1Icon className="size-3.5" />
+                  <LinkIcon className="size-3.5" />
                 )}
                 {link.label}
               </Link>

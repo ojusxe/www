@@ -7,6 +7,9 @@ export default function Directory() {
           <a href="/blogs">blogs</a>
         </li> */}
         <li>
+          <a href="/lab">lab</a>
+        </li>
+        <li>
           <a href="/resources">resources</a>
         </li>
         <li>

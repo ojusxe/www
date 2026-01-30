@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from "@radix-ui/react-icons";
+import { ArrowUp } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
         <span className="inline-flex items-center gap-1">
           © {new Date().getFullYear()} OJUS {" "}
           <Link href="#top" className="animate-bounce">
-            <ArrowUpIcon height={12} width={12} />
+            <ArrowUp className="size-3" />
           </Link>
         </span>
       </div>
