@@ -24,7 +24,7 @@ export default function FileTreePage() {
       <h2>FILE TREE</h2>
       <p className="text-muted-foreground text-sm font-mono mb-8">
         A recursive file tree component with collapsible folders, file type
-        icons, and interactive schema input. Inspired by shadcn/ui.
+        icons, and interactive schema input. Inspired by interview qn
       </p>
 
       <FileTreeShowcase />

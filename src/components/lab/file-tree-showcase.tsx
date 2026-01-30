@@ -33,104 +33,107 @@ tsconfig.json
 README.md`;
 
 // ============================================================================
-// Source Code for Display
+// Source Code for Display (Based on interview question solution)
 // ============================================================================
 
-const fileTreeSourceCode = `// Types
+const fileTreeSourceCode = `import { useState } from "react";
+
+// Types
 interface FileTreeNode {
   name: string;
+  type: "file" | "folder";
   children?: FileTreeNode[];
 }
 
-// Recursive Tree Node Component
-function TreeNode({ node, depth, path, expandedPaths, onToggle }) {
-  const isFolder = Boolean(node.children?.length);
-  const isExpanded = expandedPaths.has(path);
+// Returns emoji icon based on file extension
+function getFileIcon(filename: string): string {
+  const ext = filename.split(".").pop()?.toLowerCase();
+  
+  const iconMap: Record<string, string> = {
+    json: "📋",
+    ts: "🔷", tsx: "🔷",
+    js: "🟨", jsx: "🟨", 
+    css: "🎨", scss: "🎨",
+    md: "📝", mdx: "📝",
+    png: "🖼️", jpg: "🖼️", svg: "🖼️", webp: "🖼️",
+    html: "🌐",
+    env: "⚙️", config: "⚙️",
+  };
+  
+  return iconMap[ext || ""] || "📄";
+}
+
+// Recursive component - renders itself for children
+function FileTreeNode({ node }: { node: FileTreeNode }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const isFolder = node.type === "folder";
 
   return (
-    <div className="select-none">
+    <div style={{ marginLeft: 20 }}>
       <div
-        onClick={() => isFolder && onToggle(path)}
-        style={{ paddingLeft: \`\${depth * 12 + 8}px\` }}
-        className="flex items-center gap-1.5 py-1 px-2 rounded-md cursor-pointer"
+        onClick={() => isFolder && setIsOpen(!isOpen)}
+        style={{ 
+          cursor: isFolder ? "pointer" : "default",
+          padding: "4px 8px",
+          borderRadius: "4px",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+        }}
       >
-        {/* Chevron */}
-        {isFolder ? (
-          <ChevronRight className={cn("size-4", isExpanded && "rotate-90")} />
-        ) : (
-          <span className="size-4" />
-        )}
-        
-        {/* Icon */}
-        {isFolder ? <Folder className="size-4" /> : <File className="size-4" />}
-        
-        {/* Name */}
+        {isFolder ? (isOpen ? "📂" : "📁") : getFileIcon(node.name)}
         <span>{node.name}</span>
       </div>
-
-      {/* Recursive Children */}
-      {isFolder && isExpanded && (
-        <div>
-          {node.children!.map((child, i) => (
-            <TreeNode
-              key={\`\${path}/\${child.name}-\${i}\`}
-              node={child}
-              depth={depth + 1}
-              path={\`\${path}/\${child.name}\`}
-              expandedPaths={expandedPaths}
-              onToggle={onToggle}
-            />
-          ))}
-        </div>
-      )}
+      
+      {/* Recursive call */}
+      {isFolder && isOpen && node.children?.map((child, index) => (
+        <FileTreeNode key={\`\${child.name}-\${index}\`} node={child} />
+      ))}
     </div>
   );
 }
 
-// Main FileTree Component
-function FileTree({ data }) {
-  const [expandedPaths, setExpandedPaths] = useState(new Set());
-
-  const handleToggle = (path) => {
-    setExpandedPaths((prev) => {
-      const next = new Set(prev);
-      next.has(path) ? next.delete(path) : next.add(path);
-      return next;
-    });
-  };
-
+// Main component
+function FileTree({ data }: { data: FileTreeNode[] }) {
   return (
-    <div role="tree" className="rounded-lg border p-2">
-      {data.map((node, i) => (
-        <TreeNode
-          key={\`\${node.name}-\${i}\`}
-          node={node}
-          depth={0}
-          path={node.name}
-          expandedPaths={expandedPaths}
-          onToggle={handleToggle}
-        />
+    <div>
+      {data.map((node, index) => (
+        <FileTreeNode key={\`\${node.name}-\${index}\`} node={node} />
       ))}
     </div>
   );
-}`;
+}
 
-const schemaParserCode = `// Parse indentation-based schema to tree structure
+export default FileTree;`;
+
+const schemaParserCode = `// Converts indentation-based text to tree structure
+// Uses 2 spaces or tabs for nesting levels
+
+interface FileTreeNode {
+  name: string;
+  type: "file" | "folder";
+  children?: FileTreeNode[];
+}
+
 function parseSchemaToTree(schema: string): FileTreeNode[] {
   const lines = schema.split("\\n").filter((line) => line.trim());
   const root: FileTreeNode[] = [];
   const stack: { node: FileTreeNode; indent: number }[] = [];
 
   for (const line of lines) {
+    // Count leading whitespace (convert tabs to 2 spaces)
     const match = line.match(/^(\\s*)/);
     const indent = match ? match[1].replace(/\\t/g, "  ").length : 0;
     const name = line.trim();
 
     if (!name) continue;
 
-    const newNode: FileTreeNode = { name };
+    const newNode: FileTreeNode = { 
+      name, 
+      type: "file" // Default to file, updated if it has children
+    };
 
-    // Find parent based on indentation
+    // Find parent based on indentation level
     while (stack.length > 0 && stack[stack.length - 1].indent >= indent) {
       stack.pop();
     }
@@ -139,6 +142,7 @@ function parseSchemaToTree(schema: string): FileTreeNode[] {
       root.push(newNode);
     } else {
       const parent = stack[stack.length - 1].node;
+      parent.type = "folder"; // Has children, so it's a folder
       if (!parent.children) parent.children = [];
       parent.children.push(newNode);
     }
@@ -149,30 +153,136 @@ function parseSchemaToTree(schema: string): FileTreeNode[] {
   return root;
 }`;
 
-const usageCode = `import { FileTree, parseSchemaToTree } from "@/components/lab/file-tree";
+const usageCode = `import FileTree from "./FileTree";
+import { parseSchemaToTree } from "./parser";
 
 // Option 1: Provide data directly
 const treeData = [
   {
     name: "src",
+    type: "folder",
     children: [
-      { name: "components", children: [{ name: "button.tsx" }] },
-      { name: "utils.ts" }
+      { 
+        name: "components", 
+        type: "folder",
+        children: [
+          { name: "button.tsx", type: "file" },
+          { name: "card.tsx", type: "file" }
+        ] 
+      },
+      { name: "utils.ts", type: "file" }
     ]
-  }
+  },
+  { name: "package.json", type: "file" }
 ];
 
 <FileTree data={treeData} />
 
-// Option 2: Parse from schema string
+// Option 2: Parse from schema string (easier to write)
 const schema = \`
 src
   components
     button.tsx
+    card.tsx
   utils.ts
+package.json
 \`;
 
 <FileTree data={parseSchemaToTree(schema)} />`;
+
+const fullComponentCode = `import { useState } from "react";
+
+// Types
+interface FileTreeNode {
+  name: string;
+  type: "file" | "folder";
+  children?: FileTreeNode[];
+}
+
+// Returns emoji icon based on file extension
+function getFileIcon(filename: string): string {
+  const ext = filename.split(".").pop()?.toLowerCase();
+  const iconMap: Record<string, string> = {
+    json: "📋", ts: "🔷", tsx: "🔷", js: "🟨", jsx: "🟨", 
+    css: "🎨", scss: "🎨", md: "📝", mdx: "📝",
+    png: "🖼️", jpg: "🖼️", svg: "🖼️", html: "🌐",
+    env: "⚙️", config: "⚙️",
+  };
+  return iconMap[ext || ""] || "📄";
+}
+
+// Parses indentation-based text to tree structure
+function parseSchemaToTree(schema: string): FileTreeNode[] {
+  const lines = schema.split("\\n").filter((line) => line.trim());
+  const root: FileTreeNode[] = [];
+  const stack: { node: FileTreeNode; indent: number }[] = [];
+
+  for (const line of lines) {
+    const match = line.match(/^(\\s*)/);
+    const indent = match ? match[1].replace(/\\t/g, "  ").length : 0;
+    const name = line.trim();
+    if (!name) continue;
+
+    const newNode: FileTreeNode = { name, type: "file" };
+
+    while (stack.length > 0 && stack[stack.length - 1].indent >= indent) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      root.push(newNode);
+    } else {
+      const parent = stack[stack.length - 1].node;
+      parent.type = "folder";
+      if (!parent.children) parent.children = [];
+      parent.children.push(newNode);
+    }
+
+    stack.push({ node: newNode, indent });
+  }
+  return root;
+}
+
+// Recursive component - renders itself for children
+function FileTreeNode({ node }: { node: FileTreeNode }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const isFolder = node.type === "folder";
+
+  return (
+    <div style={{ marginLeft: 20 }}>
+      <div
+        onClick={() => isFolder && setIsOpen(!isOpen)}
+        style={{ 
+          cursor: isFolder ? "pointer" : "default",
+          padding: "4px 8px",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+        }}
+      >
+        {isFolder ? (isOpen ? "📂" : "📁") : getFileIcon(node.name)}
+        <span>{node.name}</span>
+      </div>
+      
+      {isFolder && isOpen && node.children?.map((child, i) => (
+        <FileTreeNode key={\`\${child.name}-\${i}\`} node={child} />
+      ))}
+    </div>
+  );
+}
+
+// Main component
+export default function FileTree({ data }: { data: FileTreeNode[] }) {
+  return (
+    <div>
+      {data.map((node, i) => (
+        <FileTreeNode key={\`\${node.name}-\${i}\`} node={node} />
+      ))}
+    </div>
+  );
+}
+
+export { parseSchemaToTree, type FileTreeNode };`;
 
 // ============================================================================
 // FileTree Showcase Component
@@ -206,7 +316,7 @@ export function FileTreeShowcase() {
   return (
     <ComponentShowcase
       title="File Tree"
-      description="A recursive file tree component with collapsible folders, file type icons, and interactive schema input. Inspired by shadcn/ui's sidebar file tree."
+      description="A recursive file tree component with collapsible folders, file type icons, and interactive schema input. Inspired by interview qn"
     >
       <div className="space-y-6">
         {/* Interactive Demo Section */}
@@ -274,17 +384,22 @@ export function FileTreeShowcase() {
           <CodeBlock
             tabs={[
               {
-                label: "file-tree.tsx",
+                label: "FileTree.tsx (Full)",
+                code: fullComponentCode,
+                language: "tsx",
+              },
+              {
+                label: "Component",
                 code: fileTreeSourceCode,
                 language: "tsx",
               },
               {
-                label: "parser.ts",
+                label: "Parser",
                 code: schemaParserCode,
                 language: "typescript",
               },
               {
-                label: "usage.tsx",
+                label: "Usage",
                 code: usageCode,
                 language: "tsx",
               },
