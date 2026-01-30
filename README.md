@@ -30,7 +30,7 @@ then pray it works on your machine too
 - [ ] make a /radio route - need some cool ui with immersive ux
 - [ ] add CNAME for ojus.fyi, i.e, foo.ojus.fyi; provided "foo" is a project name
 - [ ] for radio directory, we can serve music over cdn and put the enlarged header music icon as the page content
-- [ ] add a few new music - luv deluxe, her - american dawn
+- [ ] add a few new music - luv deluxe, her - american dawn, crazy pacurka
 - [ ] maybe improve the ascii intro animation, we see lag when fresh visiting in some devices 
 - [ ] add hobby-scope to project section
 - [ ] should we start writing blogs?
