@@ -34,7 +34,7 @@ export default async function CurrentProjects() {
       </ul>
       <p className="text-xs font-mono mt-2">
         <Link href="/projects" className="hover:underline">
-          view all past projects →
+          view past projects →
         </Link>
       </p>
     </>

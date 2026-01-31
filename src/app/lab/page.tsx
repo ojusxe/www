@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const components = [
   {
     title: "File Tree",
-    description: "A recursive file tree component with collapsible folders and interactive schema input.",
+    description: "A recursive file tree component with collapsible folders and interactive schema input. Inspired by interview qn",
     href: "/lab/file-tree",
   },
 ];

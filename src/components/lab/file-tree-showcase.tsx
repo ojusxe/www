@@ -6,9 +6,7 @@ import { ComponentShowcase, ComponentPreview } from "./component-showcase";
 import { CodeBlock } from "../ui/code-block";
 import { cn } from "../../lib/utils";
 
-// ============================================================================
 // Default Example Data
-// ============================================================================
 
 const defaultSchema = `src
   app
@@ -32,9 +30,7 @@ package.json
 tsconfig.json
 README.md`;
 
-// ============================================================================
 // Source Code for Display (Based on interview question solution)
-// ============================================================================
 
 const fileTreeSourceCode = `import { useState } from "react";
 
@@ -284,9 +280,7 @@ export default function FileTree({ data }: { data: FileTreeNode[] }) {
 
 export { parseSchemaToTree, type FileTreeNode };`;
 
-// ============================================================================
 // FileTree Showcase Component
-// ============================================================================
 
 export function FileTreeShowcase() {
   const [schema, setSchema] = useState(defaultSchema);

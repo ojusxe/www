@@ -17,16 +17,9 @@ export default function FileTreePage() {
         href="/lab"
         className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors mb-4"
       >
-        <ArrowLeft className="size-3" />
+      <ArrowLeft className="size-3" />
         back to lab
       </Link>
-
-      <h2>FILE TREE</h2>
-      <p className="text-muted-foreground text-sm font-mono mb-8">
-        A recursive file tree component with collapsible folders, file type
-        icons, and interactive schema input. Inspired by interview qn
-      </p>
-
       <FileTreeShowcase />
     </MdxLayout>
   );

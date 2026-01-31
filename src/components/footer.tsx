@@ -7,9 +7,6 @@ export default function Footer() {
       <div className="w-full flex justify-between items-center max-w-xl mx-auto">
         <span className="inline-flex items-center gap-1">
           © {new Date().getFullYear()} OJUS {" "}
-          <Link href="#top" className="animate-bounce">
-            <ArrowUp className="size-3" />
-          </Link>
         </span>
       </div>
     </footer>
