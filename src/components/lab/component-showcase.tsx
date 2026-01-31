@@ -24,7 +24,7 @@ export function ComponentShowcase({
         className
       )}
     >
-      <div className="border-b px-4 py-3 bg-muted/30">
+      <div className="px-4 py-3">
         <h3 className="text-sm font-semibold font-mono uppercase tracking-wide">
           {title}
         </h3>

@@ -349,7 +349,7 @@ export function FileTreeShowcase() {
           {/* Live Preview */}
           <div className="space-y-2">
             <span className="text-xs font-mono font-medium text-muted-foreground uppercase tracking-wide">
-              Live Preview
+              Preview
             </span>
             
               {treeData.length > 0 ? (
@@ -377,7 +377,7 @@ export function FileTreeShowcase() {
           <CodeBlock
             tabs={[
               {
-                label: "FileTree.tsx (Full)",
+                label: "FileTree.tsx",
                 code: fullComponentCode,
                 language: "tsx",
               },
