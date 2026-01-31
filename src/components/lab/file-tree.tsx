@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import {
   ChevronRight,
   Folder,
@@ -12,10 +12,6 @@ import {
   FileImage,
   FileCog,
 } from "lucide-react";
-
-// ============================================================================
-// Types
-// ============================================================================
 
 export interface FileTreeNode {
   name: string;
@@ -38,10 +34,6 @@ interface TreeNodeProps {
   onSelect?: (node: FileTreeNode, path: string) => void;
   selectedPath?: string;
 }
-
-// ============================================================================
-// File Icon Mapping
-// ============================================================================
 
 function getFileIcon(filename: string) {
   const ext = filename.split(".").pop()?.toLowerCase();
@@ -77,10 +69,6 @@ function getFileIcon(filename: string) {
       return <File className={cn(iconClass, "text-muted-foreground")} />;
   }
 }
-
-// ============================================================================
-// Tree Node Component (Recursive)
-// ============================================================================
 
 function TreeNode({
   node,
@@ -179,10 +167,6 @@ function TreeNode({
   );
 }
 
-// ============================================================================
-// Main FileTree Component
-// ============================================================================
-
 export function FileTree({
   data,
   className,
@@ -243,9 +227,7 @@ export function FileTree({
   );
 }
 
-// ============================================================================
 // Schema Parser Utility
-// ============================================================================
 
 /**
  * Parses a simple text-based schema into FileTreeNode structure.

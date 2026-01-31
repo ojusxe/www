@@ -80,9 +80,9 @@ export function CodeBlock({
     <div
       className={cn(
         "group relative overflow-hidden rounded-md border p-0.5",
-        "border-zinc-950/10 dark:border-white/10",
-        "bg-zinc-50 dark:bg-white/5",
-        "text-zinc-950 dark:text-zinc-50",
+        "border-zinc-950/10",
+        "bg-zinc-50",
+        "text-zinc-950",
         className
       )}
     >
@@ -95,8 +95,7 @@ export function CodeBlock({
               "flex-1 min-w-0 text-xs leading-6 rounded-tl-xl gap-1 flex",
               "overflow-x-auto overflow-y-hidden",
               "scrollbar-thin scrollbar-thumb-rounded",
-              "scrollbar-thumb-black/15 hover:scrollbar-thumb-black/20",
-              "dark:scrollbar-thumb-white/20 dark:hover:scrollbar-thumb-white/25"
+              "scrollbar-thumb-black/15 hover:scrollbar-thumb-black/20"
             )}
           >
             <div className="relative flex gap-1">
@@ -112,17 +111,17 @@ export function CodeBlock({
                     "whitespace-nowrap font-medium transition-colors duration-150",
                     "px-1.5 rounded-lg",
                     "first:ml-2.5",
-                    "hover:bg-zinc-200/50 dark:hover:bg-zinc-700/70",
+                    "hover:bg-zinc-200/50",
                     activeTab === index
-                      ? "text-zinc-950 dark:text-zinc-50"
-                      : "text-zinc-500 dark:text-zinc-400"
+                      ? "text-zinc-950"
+                      : "text-zinc-500"
                   )}
                 >
                   {tab.label}
                   {activeTab === index && (
                     <div
                       
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-zinc-950 dark:bg-zinc-50 rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-zinc-950 rounded-full"
                       
                     />
                   )}
@@ -141,12 +140,12 @@ export function CodeBlock({
           className={cn(
             "absolute top-2 right-2 z-10",
             "flex items-center gap-1.5 px-2 py-1.5 text-xs font-medium rounded-lg",
-            "text-zinc-500 dark:text-zinc-400",
-            "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm",
-            "border border-zinc-200/50 dark:border-zinc-800/50",
+            "text-zinc-500",
+            "bg-white/80 backdrop-blur-sm",
+            "border border-zinc-200/50",
             "opacity-70 group-hover:opacity-100",
-            "hover:bg-zinc-200/50 dark:hover:bg-zinc-700/70",
-            "hover:text-zinc-950 dark:hover:text-zinc-50",
+            "hover:bg-zinc-200/50",
+            "hover:text-zinc-950",
             "transition-all duration-150",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
           )}
@@ -172,27 +171,22 @@ export function CodeBlock({
           ref={preRef}
           className={cn(
             "p-4 text-sm leading-relaxed m-0",
-            "bg-white dark:bg-zinc-950/50",
+            "bg-white",
             codeContent.length > 1 ? "rounded-b-2xl" : "rounded-2xl",
             hasOverflow ? "overflow-x-auto" : "overflow-x-hidden",
             hasOverflow && "scrollbar-thin scrollbar-thumb-rounded",
             hasOverflow &&
               "scrollbar-thumb-black/15 hover:scrollbar-thumb-black/20",
-            hasOverflow &&
-              "dark:scrollbar-thumb-white/20 dark:hover:scrollbar-thumb-white/25",
             hasOverflow && "[&::-webkit-scrollbar]:h-2",
             hasOverflow && "[&::-webkit-scrollbar-thumb]:rounded-full",
             hasOverflow && "[&::-webkit-scrollbar-thumb]:bg-black/15",
-            hasOverflow && "[&::-webkit-scrollbar-thumb]:dark:bg-white/20",
             hasOverflow && "[&::-webkit-scrollbar-thumb:hover]:bg-black/20",
-            hasOverflow &&
-              "[&::-webkit-scrollbar-thumb:hover]:dark:bg-white/25",
             hasOverflow && "[&::-webkit-scrollbar-track]:bg-transparent"
           )}
         >
             <code
               key={activeTab}
-              className="font-mono text-zinc-950 dark:text-zinc-50 block whitespace-pre"
+              className="font-mono text-zinc-950 block whitespace-pre"
             >
               {currentCode}
             </code>

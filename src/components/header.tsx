@@ -83,7 +83,6 @@ export default function Header() {
       currentFrame++;
 
       if (currentFrame > totalFrames) {
-        // Animation complete
         if (asciiDisplay) asciiDisplay.classList.add("opacity");
         if (body) body.classList.add("background");
         if (main) main.classList.remove("opacity");
@@ -114,7 +113,6 @@ export default function Header() {
       if (body) body.classList.remove("background");
       if (main) main.classList.add("opacity");
       
-      // Start animation immediately
       playAnimation();
 
       if (!playedIntro) {
@@ -127,13 +125,6 @@ export default function Header() {
       if (main) main.classList.remove("opacity");
     }
   }, [pathname, playAnimation]);
-
-  // Play animation when navigating to dreamspace
-  useEffect(() => {
-    if (pathname === "/dreamspace" && hasPlayedIntro && !isAnimating) {
-      playAnimation();
-    }
-  }, [pathname, hasPlayedIntro, isAnimating, playAnimation]);
 
   // Cleanup
   useEffect(() => {

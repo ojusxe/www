@@ -2,9 +2,9 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { FileTree, parseSchemaToTree, type FileTreeNode } from "./file-tree";
-import { ComponentShowcase, ComponentPreview } from "./component-showcase";
-import { CodeBlock } from "../ui/code-block";
-import { cn } from "../../lib/utils";
+import { ComponentShowcase } from "./component-showcase";
+import { CodeBlock } from "@/components/ui/code-block";
+import { cn } from "@/lib/utils";
 
 // Default Example Data
 
@@ -335,7 +335,6 @@ export function FileTreeShowcase() {
                 "focus:outline-none focus:ring-2 focus:ring-ring/50",
                 "scrollbar-thin scrollbar-thumb-rounded",
                 "scrollbar-thumb-black/15 hover:scrollbar-thumb-black/20",
-                "dark:scrollbar-thumb-white/20 dark:hover:scrollbar-thumb-white/25",
                 error && "border-destructive focus:ring-destructive/50"
               )}
             />
