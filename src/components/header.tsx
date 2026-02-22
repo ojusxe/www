@@ -60,7 +60,7 @@ export default function Header() {
     if (body) body.classList.remove("background");
     if (main) main.classList.add("opacity");
 
-    let currentFrame = 1;
+    let currentFrame = 6;
 
     const animate = async () => {
       let text = frameCache.current.get(currentFrame);

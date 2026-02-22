@@ -61,7 +61,7 @@ export const projects: Project[] = [
       "Convert videos to ASCII frames and play them with a lightweight JS player. Made with ffmpeg's WASM port",
     ],
     image: {
-      src: "/projects/howasyourdayhoney.webp",
+      src: "/projects/howwasyourdayhoney.webp",
       alt: "how was your day honey",
     },
     links: [
