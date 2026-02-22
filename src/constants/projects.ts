@@ -58,31 +58,22 @@ export const projects: Project[] = [
   {
     title: "HOW WAS YOUR DAY HONEY?",
     description: [
-      "all-in-one link management platform using next.js, typescript, and custom tailwind css, integrating drizzle orm growing the active user base to 100+ through continuous ux improvements.",
-    ],
-    teammates: [
-      { name: "sanyam", url: "https://sanyam.xyz" },
-      { name: "aviral", url: "https://aviral.xyz/" },
+      "Convert videos to ASCII frames and play them with a lightweight JS player. Made with ffmpeg's WASM port",
     ],
     image: {
-      src: "/projects/pageo.webp",
-      alt: "pageo.me link-in-bio platform",
+      src: "/projects/howasyourdayhoney.webp",
+      alt: "how was your day honey",
     },
     links: [
       {
-        url: "https://pageo.me",
+        url: "https://howwasyourdayhoney.vercel.app",
         label: "visit",
         type: "external",
       },
       {
-        url: "https://www.producthunt.com/products/pageo-me",
-        label: "product hunt",
-        type: "external",
-      },
-      {
-        url: "https://peerlist.io/sanyamm/project/pageome",
-        label: "peerlist",
-        type: "external",
+        url: "https://github.com/ojusxe/howwasyourdayhoney",
+        label: "source",
+        type: "github",
       },
     ],
   },
