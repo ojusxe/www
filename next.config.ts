@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    // Image optimization settings
+    minimumCacheTTL: 60 * 60 * 24 * 30, // Cache optimized images for 30 days
+    formats: ['image/avif', 'image/webp'], // Prefer modern formats
   },
 };
 

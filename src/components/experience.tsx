@@ -4,6 +4,9 @@ export default function Experience() {
       <h4>MY WORK EXPERIENCE SO FAR:</h4>
       <ul>
         <li>
+          (26-) <a href="https://clueso.io">clueso</a> - design engineer intern
+        </li>
+        <li>
           (25-) <a href="https://hammerai.com">hammerai</a> - maintainer & engineer
         </li>
         <li>

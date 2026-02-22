@@ -56,6 +56,37 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "HOW WAS YOUR DAY HONEY?",
+    description: [
+      "all-in-one link management platform using next.js, typescript, and custom tailwind css, integrating drizzle orm growing the active user base to 100+ through continuous ux improvements.",
+    ],
+    teammates: [
+      { name: "sanyam", url: "https://sanyam.xyz" },
+      { name: "aviral", url: "https://aviral.xyz/" },
+    ],
+    image: {
+      src: "/projects/pageo.webp",
+      alt: "pageo.me link-in-bio platform",
+    },
+    links: [
+      {
+        url: "https://pageo.me",
+        label: "visit",
+        type: "external",
+      },
+      {
+        url: "https://www.producthunt.com/products/pageo-me",
+        label: "product hunt",
+        type: "external",
+      },
+      {
+        url: "https://peerlist.io/sanyamm/project/pageome",
+        label: "peerlist",
+        type: "external",
+      },
+    ],
+  },
+  {
     title: "RUPEEBEE",
     description: [
       "a finance awareness cross-platform app that prevents fraud, helps manage personal budget, and spreads financial awareness.",
