@@ -4,7 +4,8 @@ export const projects: Project[] = [
   {
     title: "PAGEO.ME",
     description: [
-      "all-in-one link management platform using next.js, typescript, and custom tailwind css, integrating drizzle orm growing the active user base to 100+ through continuous ux improvements.",
+      "all your digital identities at one place",
+      "manage and share all your links in the most simplest way possible, with no bloated setups. you get custom CMS, profile level analytics out of the box",
     ],
     teammates: [
       { name: "sanyam", url: "https://sanyam.xyz" },
@@ -58,7 +59,7 @@ export const projects: Project[] = [
   {
     title: "HOW WAS YOUR DAY HONEY?",
     description: [
-      "Convert videos to ASCII frames and play them with a lightweight JS player. Made with ffmpeg's WASM port",
+      "convert your animated logo's videos to ASCII frames and play them with a lightweight JS player, made with ffmpeg's WASM port",
     ],
     image: {
       src: "/projects/howwasyourdayhoney.webp",
@@ -80,9 +81,8 @@ export const projects: Project[] = [
   {
     title: "RUPEEBEE",
     description: [
-      "a finance awareness cross-platform app that prevents fraud, helps manage personal budget, and spreads financial awareness.",
-      "ranked 1st in the 1st edition of psb hackathon series out of 200+ teams, organized by punjab & sind bank.",
-      "selected among the top 11 finalists out of 7,000+ teams at the 6th edition of gff - psb series hackathon 2025, jio world convention center, mumbai.",
+      "a finance awareness cross-platform app (android & iOS) that prevents fraud, helps manage personal budget, and spreads financial awareness.",
+      "built in flutter, rupeebee helps users with managing their daily expenses, gives financial advices, provides protection from scams and frauds with its real time scam detection model"
     ],
     teammates: [
       { name: "nav9v", url: "https://nav9v.me" },
@@ -107,7 +107,7 @@ export const projects: Project[] = [
   {
     title: "LUMO PLAYGROUND",
     description: [
-      "enter lumo's playground where only hands allowed. use gestures to control 3d characters in an interactive playground environment.",
+      "enter lumo's playground where only hands allowed, use gestures to control 3d characters in an interactive playground environment and customize them in a wardrobe",
     ],
     teammates: [
       {
@@ -135,7 +135,7 @@ export const projects: Project[] = [
   {
     title: "ROAD ANOMALY DETECTION",
     description: [
-      "road anomaly detection was a part of my 6 semester minor project that leverages advanced cv techniques to identify and classify road anomalies, such as potholes, cracks, and other surface irregularities.",
+      "road anomaly detection was my 6 semester minor project that leverages advanced cv techniques to identify and classify road anomalies, such as potholes, cracks, and other surface irregularities, built with YOLOv8 and deployed with streamlit.",
     ],
     teammates: [
       { name: "nav9v", url: "https://nav9v.me" },
@@ -161,7 +161,7 @@ export const projects: Project[] = [
   {
     title: "COLLABDOOR && DUMBAF",
     description: [
-      "this community is made by cs undergrad students with intention to build cool stuff that touches a few hundread of lives if not thousand. started the community to provide course relevant resources for cs majors.",
+      "co-authoring the community led by CS undergrads with intention to build cool stuff that touches a few hundread of lives if not thousand. started the community to provide course relevant resources for engineering majors",
     ],
     teammates: [
       { name: "nav9v", url: "https://nav9v.me" },
