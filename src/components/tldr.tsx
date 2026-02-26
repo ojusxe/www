@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const images = [
-  { src: "/tldr/indigo.webp", alt: "Indigo project" },
-  { src: "/tldr/laptop.webp", alt: "Laptop setup" },
-  { src: "/tldr/egd.webp", alt: "EGD project" },
-  { src: "/tldr/blitz.webp", alt: "Blitz project" },
+  { src: "/tldr/indigo.webp", alt: "Indigo" },
+  { src: "/tldr/setup.webp", alt: "Clueso setup" },
+  { src: "/tldr/waterfall.webp", alt: "Waterfall" },
+  { src: "/tldr/blitz.webp", alt: "Blitz part" },
 ];
 
 export default function TLDR() {
