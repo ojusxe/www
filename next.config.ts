@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  experimental: {
+    optimizePackageImports: ["@phosphor-icons/react"],
+  },
   compress: true, // Enable gzip compression (default: true)
   images: {
     remotePatterns: [

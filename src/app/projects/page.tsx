@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
 import Image from "next/image";
-import { Github, Link as LinkIcon } from "lucide-react";
+import { GithubLogoIcon, LinkIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import  { projects } from "@/constants/projects";
 import { Project } from "@/types/projects";
@@ -66,7 +66,7 @@ function ProjectCard({ project, priority = false }: { project: Project; priority
                 className="flex items-center gap-1.5 text-xs hover:underline"
               >
                 {link.type === "github" ? (
-                  <Github className="size-3.5" />
+                  <GithubLogoIcon className="size-3.5" />
                 ) : (
                   <LinkIcon className="size-3.5" />
                 )}

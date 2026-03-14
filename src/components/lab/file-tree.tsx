@@ -3,15 +3,18 @@
 import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import {
-  ChevronRight,
-  Folder,
-  File,
-  FileJson,
-  FileCode,
-  FileText,
-  FileImage,
-  FileCog,
-} from "lucide-react";
+  CaretRightIcon,
+  FolderSimpleIcon,
+  FileIcon,
+  BracketsCurlyIcon,
+  FileTsIcon,
+  FileJsIcon,
+  FileCssIcon,
+  FileCodeIcon,
+  FileTextIcon,
+  FileImageIcon,
+  GearSixIcon,
+} from "@phosphor-icons/react";
 
 export interface FileTreeNode {
   name: string;
@@ -41,19 +44,19 @@ function getFileIcon(filename: string) {
 
   switch (ext) {
     case "json":
-      return <FileJson className={cn(iconClass, "text-yellow-500")} />;
+      return <BracketsCurlyIcon className={cn(iconClass, "text-yellow-500")} />;
     case "ts":
     case "tsx":
-      return <FileCode className={cn(iconClass, "text-blue-500")} />;
+      return <FileTsIcon className={cn(iconClass, "text-blue-500")} />;
     case "js":
     case "jsx":
-      return <FileCode className={cn(iconClass, "text-yellow-400")} />;
+      return <FileJsIcon className={cn(iconClass, "text-yellow-400")} />;
     case "css":
     case "scss":
-      return <FileCode className={cn(iconClass, "text-pink-500")} />;
+      return <FileCssIcon className={cn(iconClass, "text-pink-500")} />;
     case "md":
     case "mdx":
-      return <FileText className={cn(iconClass, "text-gray-500")} />;
+      return <FileTextIcon className={cn(iconClass, "text-gray-500")} />;
     case "png":
     case "jpg":
     case "jpeg":
@@ -61,12 +64,12 @@ function getFileIcon(filename: string) {
     case "svg":
     case "webp":
     case "avif":
-      return <FileImage className={cn(iconClass, "text-green-500")} />;
+      return <FileImageIcon className={cn(iconClass, "text-green-500")} />;
     case "config":
     case "env":
-      return <FileCog className={cn(iconClass, "text-gray-400")} />;
+      return <GearSixIcon className={cn(iconClass, "text-gray-400")} />;
     default:
-      return <File className={cn(iconClass, "text-muted-foreground")} />;
+      return <FileIcon className={cn(iconClass, "text-muted-foreground")} />;
   }
 }
 
@@ -120,7 +123,7 @@ function TreeNode({
       >
         {/* Chevron for folders */}
         {isFolder ? (
-          <ChevronRight
+          <CaretRightIcon
             className={cn(
               "size-4 shrink-0 text-muted-foreground transition-transform duration-200",
               isExpanded && "rotate-90"
@@ -132,7 +135,7 @@ function TreeNode({
 
         {/* Icon */}
         {isFolder ? (
-          <Folder
+          <FolderSimpleIcon
             className={cn(
               "size-4 shrink-0 transition-colors",
               isExpanded ? "text-blue-400" : "text-blue-500"

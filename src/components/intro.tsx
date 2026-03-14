@@ -1,9 +1,5 @@
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
-import { IoDocument } from "react-icons/io5";
-import { CgMailForward } from "react-icons/cg";
+import { GithubLogoIcon, LinkedinLogoIcon, XLogoIcon, FileTextIcon, ArrowBendUpRightIcon } from "@phosphor-icons/react/ssr";
 import { calculateAge } from "../lib/utils";
 
 export default function Intro() {
@@ -18,7 +14,7 @@ export default function Intro() {
         {calculateAge()} y/o, from{" "}
         <a href="https://panipat.gov.in/">panipat, HR (india)</a>.<br />
         <br />
-        reach out <CgMailForward className="h-5 w-5 inline-block" />
+        reach out <ArrowBendUpRightIcon className="h-5 w-5 inline-block" />
         <Link
           href="mailto:ojusxe@gmail.com"
           className="text-gray-300 relative group hover:underline"
@@ -51,17 +47,17 @@ export default function Intro() {
 
 const socials = [
   {
-    icon: FaGithub,
+    icon: GithubLogoIcon,
     label: "GITHUB",
     href: "https://github.com/ojusxe",
   },
   {
-    icon: FaXTwitter,
+    icon: XLogoIcon,
     label: "TWITTER",
     href: "https://x.com/ojusxe",
   },
   {
-    icon: FaLinkedin,
+    icon: LinkedinLogoIcon,
     label: "LINKEDIN",
     href: "https://linkedin.com/in/ojusxe",
   },
@@ -71,7 +67,7 @@ const socials = [
     href: "https://pageo.me/ojus",
   },
   {
-    icon: IoDocument,
+    icon: FileTextIcon,
     label: "RÉSUMÉ",
     href: "https://drive.google.com/file/d/1f4YXh2QCQdbWx-j72nVZMJQtrPfK1UQi/view?usp=sharing",
   },

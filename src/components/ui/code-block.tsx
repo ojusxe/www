@@ -1,7 +1,7 @@
 "use client"
 
 import { useLayoutEffect, useMemo, useRef, useState } from "react"
-import { Copy, Check } from "lucide-react";
+import { CopyIcon, CheckIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils"
 
 interface CodeTab {
@@ -156,13 +156,13 @@ export function CodeBlock({
              
               className="absolute inset-0"
             >
-              <Copy className="size-full" />
+              <CopyIcon className="size-full" />
             </div>
             <div
               
               className="absolute inset-0"
             >
-              <Check className="size-full" />
+              <CheckIcon className="size-full" />
             </div>
           </span>
           <span>{copied ? "Copied" : "Copy"}</span>
