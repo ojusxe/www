@@ -73,7 +73,7 @@ const socials = [
   {
     icon: IoDocument,
     label: "RÉSUMÉ",
-    href: "https://drive.google.com/file/d/1f4YXh2QCQdbWx-j72nVZMJQtrPfK1UQi/view?usp=sharing",
+    href: "https://drive.google.com/file/d/1ZcLU06VZXm2MWQWlfbCkJCIiB8o97Xmy/view?usp=sharing",
   },
 ];
 
