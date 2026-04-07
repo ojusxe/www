@@ -32,3 +32,9 @@ export interface MusicTrack {
   url: string;
   _updatedAt: string;
 }
+
+export interface Profile {
+  _id: string;
+  title: string;
+  cvUrl?: string;
+}

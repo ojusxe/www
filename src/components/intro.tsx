@@ -5,8 +5,54 @@ import { FaXTwitter } from "react-icons/fa6";
 import { IoDocument } from "react-icons/io5";
 import { CgMailForward } from "react-icons/cg";
 import { calculateAge } from "../lib/utils";
+import { publicClient } from "@/lib/sanity";
+import { Profile } from "@/types/sanity";
 
-export default function Intro() {
+const FALLBACK_CV_URL =
+  "https://drive.google.com/file/d/1ZcLU06VZXm2MWQWlfbCkJCIiB8o97Xmy/view?usp=sharing";
+
+async function getProfile(): Promise<Profile | null> {
+  const query = `*[_type == "profile"] | order(_updatedAt desc)[0] {
+    _id,
+    title,
+    "cvUrl": cv.asset->url
+  }`;
+
+  return publicClient.fetch(query);
+}
+
+export default async function Intro() {
+  const profile = await getProfile();
+  const cvHref = profile?.cvUrl || FALLBACK_CV_URL;
+
+  const socials = [
+    {
+      icon: FaGithub,
+      label: "GITHUB",
+      href: "https://github.com/ojusxe",
+    },
+    {
+      icon: FaXTwitter,
+      label: "TWITTER",
+      href: "https://x.com/ojusxe",
+    },
+    {
+      icon: FaLinkedin,
+      label: "LINKEDIN",
+      href: "https://linkedin.com/in/ojusxe",
+    },
+    {
+      icon: Pageo,
+      label: "PAGEO",
+      href: "https://pageo.me/ojus",
+    },
+    {
+      icon: IoDocument,
+      label: "RÉSUMÉ",
+      href: cvHref,
+    },
+  ];
+
   return (
     <>
       <h2>
@@ -48,34 +94,6 @@ export default function Intro() {
     </>
   );
 }
-
-const socials = [
-  {
-    icon: FaGithub,
-    label: "GITHUB",
-    href: "https://github.com/ojusxe",
-  },
-  {
-    icon: FaXTwitter,
-    label: "TWITTER",
-    href: "https://x.com/ojusxe",
-  },
-  {
-    icon: FaLinkedin,
-    label: "LINKEDIN",
-    href: "https://linkedin.com/in/ojusxe",
-  },
-  {
-    icon: Pageo,
-    label: "PAGEO",
-    href: "https://pageo.me/ojus",
-  },
-  {
-    icon: IoDocument,
-    label: "RÉSUMÉ",
-    href: "https://drive.google.com/file/d/1ZcLU06VZXm2MWQWlfbCkJCIiB8o97Xmy/view?usp=sharing",
-  },
-];
 
 function Pageo ({ size = 16 }: { size?: number }) {
   return (
