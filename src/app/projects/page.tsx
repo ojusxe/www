@@ -16,8 +16,8 @@ export const dynamic = 'force-static';
 
 function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
   return (
-    <div className="relative w-full mb-6">
-      <pre className="prose-p:last-of-type:mb-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto">
+    <div className="relative mb-4 w-full break-inside-avoid">
+      <pre className="prose-p:last-of-type:mb-0 m-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto">
         <div className="w-full text-wrap">
           <span className="font-semibold">{project.title}</span>
 
@@ -82,11 +82,11 @@ function ProjectCard({ project, priority = false }: { project: Project; priority
 
 export default function ProjectsPage() {
   return (
-    <MdxLayout>
+    <MdxLayout constrainWidth={false}>
       <h2>PROJECTS</h2>
       <h4>A COLLECTION OF PROJECTS I&apos;VE WORKED ON</h4>
 
-      <div className="mt-6">
+      <div className="mt-6 columns-1 gap-4 lg:columns-2">
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} priority={index < 2} />
         ))}

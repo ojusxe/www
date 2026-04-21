@@ -8,7 +8,7 @@ export const projects: Project[] = [
       "manage and share all your links in the most simplest way possible, with no bloated setups. you get custom CMS, profile level analytics out of the box",
     ],
     teammates: [
-      { name: "sanyam", url: "https://sanyam.xyz" },
+      { name: "sanyam", url: "https://sanyam.sh" },
       { name: "aviral", url: "https://aviral.xyz/" },
     ],
     image: {
@@ -195,7 +195,7 @@ export const projects: Project[] = [
       "project gomini - a backend api built with go and gemini 2.5 to generate intelligent responses based on user prompts.",
       "project stripe-go - implementation of stripe's payment intent api integrated with go backend.",
     ],
-    teammates: [{ name: "sanyam", url: "https://sanyam.xyz" }],
+    teammates: [{ name: "sanyam", url: "https://sanyam.sh" }],
     image: {
       src: "/projects/go.webp",
       alt: "gopher and go",

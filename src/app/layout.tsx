@@ -65,8 +65,10 @@ export default function RootLayout({
       </head>
       <body className="font-inter bg-background text-foreground relative w-full min-h-screen">
         <ThemeProvider>
-          <main className="flex flex-col w-full h-full max-w-lg mx-auto justify-start min-h-screen px-4 md:px-0 opacity">
-            <Header />
+          <main className="flex flex-col w-full h-full justify-start min-h-screen px-4 md:px-0 opacity">
+            <div className="w-full max-w-lg mx-auto">
+              <Header />
+            </div>
             <Container>
               {children}
               <Analytics />
