@@ -2,6 +2,7 @@ import { publicClient } from '../../lib/sanity'
 import { Metadata } from "next"
 import { DreamSpace } from "../../components/dreamspace"
 import MdxLayout from "../../components/ui/mdx-layout"
+import { BackButton } from "../../components/ui/back-button"
 import { GalleryItem } from "../../types/sanity"
 
 export const metadata: Metadata = {
@@ -32,25 +33,20 @@ export default async function DreamspaceGalleryPage() {
     error = err instanceof Error ? err.message : 'Failed to fetch gallery items'
   }
 
-  if (error) {
-    return (
-      <MdxLayout>
-        <h4>DREAMSPACE:</h4>
-        <div className="text-red-600 bg-red-50 p-4 rounded-lg">
+  return (
+    <MdxLayout>
+      <BackButton href="/" label="back to home" />
+      <h2 >DREAMSPACE:</h2>
+      <p>some visuals rendered and diffused along the way.</p>
+      {error ? (
+        <div className="text-red-600 bg-red-50 p-4 rounded-lg mt-4">
           <p className="font-semibold">Error loading gallery:</p>
           <p className="text-sm mt-1">{error}</p>
         </div>
-      </MdxLayout>
-    )
-  }
-
-  return (
-    <MdxLayout>
-      <h4 className='text-xl'>DREAMSPACE:</h4>
-      <p>some visuals rendered and diffused along the way.</p>
+      ) : 
       <div className="mt-8">
         <DreamSpace items={galleryItems} />
-      </div>
+      </div>}
     </MdxLayout>
   )
 }
