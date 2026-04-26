@@ -1,0 +1,157 @@
+import { BackButton } from "@/components/ui/back-button";
+
+export const metadata = {
+  title: "managing git credentials for multiple github accounts on one machine",
+  description:
+    "a clean setup for keeping work and personal github identities separate without credential conflicts",
+};
+
+<BackButton href="/logs" label="back to logs" />
+
+### MANAGING GIT CREDENTIALS FOR MULTIPLE GITHUB ACCOUNTS ON ONE MACHINE
+
+<strong>G</strong>it doesn't natively give you a clean way to manage multiple profiles on a single machine. this becomes a problem when you want to use one machine for both work and personal projects i.e two identities, two github accounts, and things start breaking in subtle ways
+
+commits may use the wrong email, authentication fails for private repos, or ssh and https setups interfere with each other
+
+<img src="/logs/manage-git-credentials.webp" />
+
+the approach here is to separate concerns cleanly: work uses ssh, personal uses https, and folder-based git config handles which identity is active
+
+---
+
+#### (1.0) git identity vs authentication
+
+these are two different things. `user.name` and `user.email` define who authored the commit. ssh and https define how you authenticate with github. you can commit with one email and authenticate with a completely different account — git doesn't enforce a relationship between the two
+
+github uses the commit email to link commits to your profile. if the email matches your account, commits show up in your contributions. if not, they still work but aren't attributed to you.
+
+git supports conditional config to pick an identity by directory:
+
+```ini
+[includeIf "gitdir:~/personal/"]
+    path = ~/.gitconfig-personal
+```
+
+this lets `~/work` use your work identity and `~/personal` use your personal one automatically.
+
+---
+
+#### (2.0) setup
+
+start by creating the two folders at the root of home; you'll put your work related repos inside the `~/work` and likewise personal projects inside the `~/personal`:
+
+keep the folder names to your convenience
+```bash
+mkdir -p ~/work
+mkdir -p ~/personal
+```
+
+set your global git identity to your work account; this acts as the default:
+
+```bash
+git config --global user.name "your name"
+git config --global user.email "you@company.com"
+```
+
+create a personal config override at `~/.gitconfig-personal`. open it with nano:
+
+```bash
+nano ~/.gitconfig-personal
+```
+
+paste this in:
+
+```ini
+[user]
+    name = your name
+    email = yourpersonal@email.com
+```
+
+save and exit: `ctrl + o` to overwrite → `enter` to confirm → `ctrl + x` to close
+
+then open your global git config to link it:
+
+```bash
+nano ~/.gitconfig
+```
+
+add this at the bottom:
+
+```ini
+[includeIf "gitdir:~/personal/"]
+    path = ~/.gitconfig-personal
+```
+
+save and exit the same way: `ctrl + o` → `enter` → `ctrl + x`
+
+---
+
+#### (3.0) work — ssh
+
+generate a dedicated ssh key for your work account:
+
+```bash
+ssh-keygen -t ed25519 -C "you@company.com" -f ~/.ssh/id_ed25519_work
+```
+
+add it to the ssh agent:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519_work
+```
+
+copy the public key and add it to your work github account under settings → ssh keys:
+
+```bash
+cat ~/.ssh/id_ed25519_work.pub
+```
+
+test the connection:
+
+```bash
+ssh -T git@github.com
+```
+
+clone work repos over ssh:
+
+```bash
+cd ~/work
+git clone git@github.com:company/repo.git
+```
+
+---
+
+#### (4.0) personal — https
+
+enable credential storage so you're not prompted every time:
+
+```bash
+git config --global credential.helper osxkeychain
+```
+
+create a personal access token on github under settings → developer settings → personal access tokens (classic). select `repo` scope if you need private repo access
+
+clone personal repos over https when prompted, use your github username and the token as the password:
+
+```bash
+cd ~/personal
+git clone https://github.com/username/repo.git
+```
+
+---
+
+#### (5.0) common issues
+
+**wrong email in commits** 
+- run `git config --show-origin user.email` to see where the value is coming from. if there's a local override conflicting, clear it with `git config --local --unset user.email`.
+
+**https keeps asking for login** 
+- check that the credential helper is set with `git config --global credential.helper`. if it's empty, re-run the osxkeychain command above.
+
+**ssh not working** 
+- run `ssh-add -l` to check if the key is loaded. if not, run `ssh-add ~/.ssh/id_ed25519_work` again.
+
+**folder config not applying** 
+- make sure the path in `includeIf` ends with a trailing slash (`~/personal/`) and that you're inside an initialized git repo.
