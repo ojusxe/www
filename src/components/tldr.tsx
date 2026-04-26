@@ -13,7 +13,7 @@ export default function TLDR() {
       <h4>TL;DR:</h4>
       <p>
         i&apos;m a fan of the process. i&apos;ve been building things and
-        working for startups for over an year now.
+        working for startups for well over an year now.
       </p>
 
       <div className="mt-2 grid grid-cols-4 gap-2">
