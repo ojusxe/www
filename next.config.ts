@@ -3,7 +3,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  compress: true, // Enable gzip compression (default: true)
+  compress: true,
+  experimental: {
+    mdxRs: true,
+  },
   images: {
     remotePatterns: [
       {
