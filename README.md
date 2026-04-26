@@ -1,14 +1,15 @@
 ## ojus.fyi
 
-my personal corner of the internet where i dump thoughts, digital art, projects, and occasionally good ideas
+my personal corner of the internet where i dump thoughts, tensor art, nature pics, projects, and occasionally good ideas
 
 ## what's here
 
-- some past projects that didn't completely break
+- some past projects that i worked with friends and solo
 - a dreamspace gallery for visual stuff
 - random musings and links
 - probably too much anime and pop soundtrack integration
-- bookmarks
+- bookmarks resources
+- some technical writings
 
 ### built with
 
@@ -38,3 +39,5 @@ then pray it works on your machine too
 - [x] should we start writing blogs?
 - [ ] make the radio into a small widgets to be put in the bottom right (listen music as you navigate through my portfolio) with a collapsible button 
 - [ ] masonry layout: https://www.ui-layouts.com/components/masonary-grid
+- [ ] bump nextjs to version 16.x
+- [ ] maintain the constants across the app under /constants
