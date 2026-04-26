@@ -21,7 +21,6 @@
     "sanity-deploy-graphql": "sanity graphql deploy"
   },
   "dependencies": {
-    "@mdx-js/react": "^3.1.0",
     "@radix-ui/react-slot": "^1.2.0",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.14.2",
@@ -35,12 +34,10 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "sanity": "^4.14.2",
-    "styled-components": "^6.1.19",
     "tailwind-merge": "^3.2.0",
     "tw-animate-css": "^1.2.5"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^3.1.0",
     "@next/mdx": "^15.3.0",
     "@tailwindcss/postcss": "^4.1.4",
     "@tailwindcss/typography": "^0.5.16",
