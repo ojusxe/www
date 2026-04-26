@@ -17,7 +17,7 @@ export const dynamic = 'force-static';
 function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
   return (
     <div className="relative mb-4 w-full break-inside-avoid">
-      <pre className="prose-p:last-of-type:mb-0 m-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto">
+      <pre className="prose-p:last-of-type:mb-0 m-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto transition-colors hover:border-green-500/60 hover:bg-green-50/50">
         <div className="w-full text-wrap">
           <span className="font-semibold">{project.title}</span>
 
