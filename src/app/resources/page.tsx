@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
+import { BackButton } from "../../components/ui/back-button";
 import { publicClient } from "../../lib/sanity";
 import { Resource } from "../../types/sanity";
 import { formatDate } from "../../lib/utils";
@@ -36,6 +37,7 @@ export default async function ResourcesPage() {
 
   return (
     <MdxLayout>
+      <BackButton href="/" label="back to home" />
       <h2>RESOURCES</h2>
       <h5>LAST UPDATED {lastUpdatedDate}</h5>
 

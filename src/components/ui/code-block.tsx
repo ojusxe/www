@@ -79,8 +79,8 @@ export function CodeBlock({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-md border p-0.5",
-        "border-zinc-950/10",
+        "group overflow-hidden rounded-md border",
+        "border-zinc-200",
         "bg-zinc-50",
         "text-zinc-950",
         className
@@ -134,45 +134,26 @@ export function CodeBlock({
 
       {/* Code Content */}
       <div className="relative overflow-hidden">
-        {/* Copy Button */}
-        <button
-          onClick={handleCopy}
-          className={cn(
-            "absolute top-2 right-2 z-10",
-            "flex items-center gap-1.5 px-2 py-1.5 text-xs font-medium rounded-lg",
-            "text-zinc-500",
-            "bg-white/80 backdrop-blur-sm",
-            "border border-zinc-200/50",
-            "opacity-70 group-hover:opacity-100",
-            "hover:bg-zinc-200/50",
-            "hover:text-zinc-950",
-            "transition-all duration-150",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
-          )}
-          aria-label="Copy code"
-        >
-          <span className="relative size-3.5">
-            <div
-             
-              className="absolute inset-0"
-            >
-              <Copy className="size-full" />
-            </div>
-            <div
-              
-              className="absolute inset-0"
-            >
-              <Check className="size-full" />
-            </div>
-          </span>
-          <span>{copied ? "Copied" : "Copy"}</span>
-        </button>
+        {/* Header row: language + copy */}
+        <div className="flex items-center justify-between px-3 py-1.5 border-b border-zinc-200">
+          <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">{codeContent[activeTab]?.language || language}</span>
+          <button
+            onClick={handleCopy}
+            className={cn(
+              "flex items-center gap-1 text-[10px] font-medium",
+              "text-zinc-400 hover:text-zinc-700 transition-colors duration-150",
+              "focus-visible:outline-none"
+            )}
+            aria-label="Copy code"
+          >
+            {copied ? <Check className="size-3" /> : <Copy className="size-3" />}
+            <span>{copied ? "Copied" : "Copy"}</span>
+          </button>
+        </div>
         <pre
           ref={preRef}
           className={cn(
-            "p-4 text-sm leading-relaxed m-0",
-            "bg-white",
-            codeContent.length > 1 ? "rounded-b-2xl" : "rounded-2xl",
+            "px-4 py-0 text-sm leading-relaxed m-0 bg-zinc-50",
             hasOverflow ? "overflow-x-auto" : "overflow-x-hidden",
             hasOverflow && "scrollbar-thin scrollbar-thumb-rounded",
             hasOverflow &&

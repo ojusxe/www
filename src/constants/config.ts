@@ -7,8 +7,9 @@ const config = {
   MAIN_BRANCH: "main",
   SITE_URL: "https://ojus.fyi",
   HEADER: {
+    logs: "/logs",
     projects: "/projects",
-    resources: "/resources",
+    resources: "/resources"
   },
 } as const;
 

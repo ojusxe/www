@@ -5,11 +5,8 @@ export default function Directory() {
     <>
       <h4>DIRECTORIES:</h4>
       <ul>
-        {/* <li>
-          <a href="/blogs">blogs</a>
-        </li> */}
         <li>
-          <Link href="/lab">lab</Link>
+          <Link href="/logs">logs</Link>
         </li>
         <li>
           <Link href="/resources">resources</Link>

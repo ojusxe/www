@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
+import { BackButton } from "../../components/ui/back-button";
 import Image from "next/image";
 import { Github, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
@@ -83,6 +84,7 @@ function ProjectCard({ project, priority = false }: { project: Project; priority
 export default function ProjectsPage() {
   return (
     <MdxLayout constrainWidth={false}>
+      <BackButton href="/" label="back to home" />
       <h2>PROJECTS</h2>
       <h4>A COLLECTION OF PROJECTS I&apos;VE WORKED ON</h4>
 
