@@ -42,3 +42,4 @@ then pray it works on your machine too
 - [ ] bump nextjs to version 16.x
 - [ ] maintain the constants across the app under /constants
 - [ ] fix sanity api calling revalidation in /dreamspace and similar bad usage
+- [ ] resources with categories eg. component libraries
