@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
 import { BackButton } from "../../components/ui/back-button";
 import Image from "next/image";
-import { Github, Link as LinkIcon } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 import  { projects } from "@/constants/projects";
 import { Project } from "@/types/projects";
@@ -67,7 +68,7 @@ function ProjectCard({ project, priority = false }: { project: Project; priority
                 className="flex items-center gap-1.5 text-xs hover:underline"
               >
                 {link.type === "github" ? (
-                  <Github className="size-3.5" />
+                  <FaGithub className="size-3.5" />
                 ) : (
                   <LinkIcon className="size-3.5" />
                 )}

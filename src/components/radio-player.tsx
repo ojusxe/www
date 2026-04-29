@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { cn } from "../lib/utils";
 
 interface RadioPlayerProps {
@@ -9,13 +9,52 @@ interface RadioPlayerProps {
 
 export default function RadioPlayer({ initialTracks = [] }: RadioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  
-  const musicTracks = initialTracks.map((t) => ({ src: t.url, title: t.title }));
+
+  const musicTracks = useMemo(
+    () => initialTracks.map((t) => ({ src: t.url, title: t.title })),
+    [initialTracks]
+  );
 
   const [currentTrack, setCurrentTrack] = useState(0);
   const [hasError, setHasError] = useState(false);
   const [trackTitle, setTrackTitle] = useState("");
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const currentTrackRef = useRef(currentTrack);
+  const musicTracksRef = useRef(musicTracks);
+
+  useEffect(() => {
+    musicTracksRef.current = musicTracks;
+  }, [musicTracks]);
+
+  const playRandomTrack = useCallback(() => {
+    const tracks = musicTracksRef.current;
+
+    if (!audioRef.current || tracks.length === 0) {
+      setHasError(true);
+      return;
+    }
+
+    let nextTrack;
+    do {
+      nextTrack = Math.floor(Math.random() * tracks.length);
+    } while (nextTrack === currentTrackRef.current && tracks.length > 1);
+
+    currentTrackRef.current = nextTrack;
+    setCurrentTrack(nextTrack);
+    setTrackTitle(tracks[nextTrack].title);
+    audioRef.current.src = tracks[nextTrack].src;
+
+    // Small delay to ensure source is set
+    setTimeout(() => {
+      audioRef.current?.play().then(() => {
+        setIsPlaying(true);
+        setHasError(false);
+      }).catch(() => {
+        setHasError(true);
+        setIsPlaying(false);
+      });
+    }, 50);
+  }, []);
 
   useEffect(() => {
     try {
@@ -24,9 +63,7 @@ export default function RadioPlayer({ initialTracks = [] }: RadioPlayerProps) {
       audioRef.current.loop = false;
 
       const handleTrackEnd = () => {
-        if (isPlaying) {
-          playRandomTrack();
-        }
+        playRandomTrack();
       };
 
       const handleError = () => {
@@ -53,34 +90,7 @@ export default function RadioPlayer({ initialTracks = [] }: RadioPlayerProps) {
         audioRef.current = null;
       }
     };
-  }, []);
-
-  const playRandomTrack = () => {
-    if (!audioRef.current || musicTracks.length === 0) {
-      setHasError(true);
-      return;
-    }
-
-    let nextTrack;
-    do {
-      nextTrack = Math.floor(Math.random() * musicTracks.length);
-    } while (nextTrack === currentTrack && musicTracks.length > 1);
-
-    setCurrentTrack(nextTrack);
-    setTrackTitle(musicTracks[nextTrack].title);
-    audioRef.current.src = musicTracks[nextTrack].src;
-    
-    // Small delay to ensure source is set
-    setTimeout(() => {
-      audioRef.current?.play().then(() => {
-        setIsPlaying(true);
-        setHasError(false);
-      }).catch(() => {
-        setHasError(true);
-        setIsPlaying(false);
-      });
-    }, 50);
-  };
+  }, [playRandomTrack]);
 
   const playSpecificTrack = (index: number) => {
     if (!audioRef.current) return;
@@ -95,6 +105,7 @@ export default function RadioPlayer({ initialTracks = [] }: RadioPlayerProps) {
     }
 
     // Play the selected track
+    currentTrackRef.current = index;
     setCurrentTrack(index);
     setTrackTitle(musicTracks[index].title);
     audioRef.current.src = musicTracks[index].src;
