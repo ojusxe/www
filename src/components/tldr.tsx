@@ -1,11 +1,5 @@
 import Image from "next/image";
-
-const images = [
-  { src: "/tldr/indigo.webp", alt: "Indigo" },
-  { src: "/tldr/setup.webp", alt: "Clueso setup" },
-  { src: "/tldr/waterfall.webp", alt: "Waterfall" },
-  { src: "/tldr/blitz.webp", alt: "Blitz part" },
-];
+import { TLDR_IMAGES } from "@/constants/home";
 
 export default function TLDR() {
   return (
@@ -17,7 +11,7 @@ export default function TLDR() {
       </p>
 
       <div className="mt-2 grid grid-cols-4 gap-2">
-        {images.map((image, index) => (
+        {TLDR_IMAGES.map((image, index) => (
           <div key={index}>
             <Image
               src={image.src}

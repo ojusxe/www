@@ -18,34 +18,6 @@ export const CURRENT_PROJECTS = [
   },
 ] as const;
 
-export const SOCIAL_LINKS = [
-  {
-    icon: "github",
-    label: "GITHUB",
-    href: "https://github.com/ojusxe",
-  },
-  {
-    icon: "twitter",
-    label: "TWITTER",
-    href: "https://x.com/ojusxe",
-  },
-  {
-    icon: "linkedin",
-    label: "LINKEDIN",
-    href: "https://linkedin.com/in/ojusxe",
-  },
-  {
-    icon: "pageo",
-    label: "PAGEO",
-    href: "https://pageo.me/ojus",
-  },
-  {
-    icon: "document",
-    label: "RÉSUMÉ",
-    href: "cv",
-  },
-] as const;
-
 export const WORK_EXPERIENCE = [
   {
     period: "26-",
@@ -67,7 +39,7 @@ export const WORK_EXPERIENCE = [
   },
   {
     period: "24",
-    company: "flib store",
+    company: "flib",
     href: "https://flib.store",
     role: "frontend engineer",
   },
