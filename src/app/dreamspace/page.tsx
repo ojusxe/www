@@ -4,28 +4,21 @@ import { DreamSpace } from "../../components/dreamspace"
 import MdxLayout from "../../components/ui/mdx-layout"
 import { BackButton } from "../../components/ui/back-button"
 import { GalleryItem } from "../../types/sanity"
+import { SANITY_QUERIES } from "@/constants/sanity"
 
 export const metadata: Metadata = {
   title: "dreamspace",
   description: "some visual moments captured along the way",
 }
 
-export const revalidate = 60 // Revalidate every 60 seconds
+export const revalidate = 60
 
 export default async function DreamspaceGalleryPage() {
   let galleryItems: GalleryItem[] = []
   let error: string | null = null
 
   try {
-    const query = `*[_type == "galleryItem"]{
-      _id,
-      caption,
-      "imageUrl": media.asset->url,
-      "width": media.asset->metadata.dimensions.width,
-      "height": media.asset->metadata.dimensions.height
-    }`
-
-    galleryItems = await publicClient.fetch(query)
+    galleryItems = await publicClient.fetch(SANITY_QUERIES.galleryItems)
   } catch (err) {
     if (process.env.NODE_ENV === 'development') {
       console.error('Error fetching gallery items:', err)

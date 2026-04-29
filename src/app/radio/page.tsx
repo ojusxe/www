@@ -3,6 +3,7 @@ import RadioPlayer from "../../components/radio-player";
 import { publicClient } from "../../lib/sanity";
 import { MusicTrack } from "../../types/sanity";
 import { formatDate } from "../../lib/utils";
+import { SANITY_QUERIES } from "@/constants/sanity";
 
 export const metadata: Metadata = {
   title: "radio",
@@ -15,13 +16,7 @@ export default async function RadioPage() {
   let tracks: MusicTrack[] = [];
 
   try {
-    const query = `*[_type == "musicTrack"]{
-      _id,
-      title,
-      "url": audioFile.asset->url,
-      _updatedAt
-    }`;
-    tracks = await publicClient.fetch(query);
+    tracks = await publicClient.fetch(SANITY_QUERIES.musicTracks);
   } catch (error) {
     console.error("Error fetching music tracks:", error);
   }

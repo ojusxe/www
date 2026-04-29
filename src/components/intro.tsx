@@ -7,18 +7,13 @@ import { CgMailForward } from "react-icons/cg";
 import { calculateAge } from "../lib/utils";
 import { publicClient } from "@/lib/sanity";
 import { Profile } from "@/types/sanity";
+import { SANITY_QUERIES } from "@/constants/sanity";
 
 const FALLBACK_CV_URL =
   "https://drive.google.com/file/d/1ZcLU06VZXm2MWQWlfbCkJCIiB8o97Xmy/view?usp=sharing";
 
 async function getProfile(): Promise<Profile | null> {
-  const query = `*[_type == "profile"] | order(_updatedAt desc)[0] {
-    _id,
-    title,
-    "cvUrl": cv.asset->url
-  }`;
-
-  return publicClient.fetch(query);
+  return publicClient.fetch(SANITY_QUERIES.profile);
 }
 
 export default async function Intro() {
@@ -59,7 +54,7 @@ export default async function Intro() {
         CIAO! I&apos;M OJUS<span className="">.</span>
       </h2>
       <p>
-        i'm a frontend-first full stack developer and final semester CS undergrad{" "}
+        i&apos;m a frontend-first full stack developer and final semester CS undergrad{" "}
         <Link href="https://ptu.ac.in/">@ punjab technical university</Link>,{" "}
         {calculateAge()} y/o, from{" "}
         <a href="https://panipat.gov.in/">panipat, HR (india)</a>.<br />
