@@ -91,7 +91,7 @@ export default async function RootLayout({
             aria-hidden="true"
             className="ascii-display opacity"
           ></div>
-          <Agentation />
+          {/* <Agentation /> */}
         </ThemeProvider>
       </body>
     </html>
