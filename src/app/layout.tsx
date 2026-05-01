@@ -11,6 +11,7 @@ import RadioWidget from "../components/radio-widget";
 import { publicClient } from "../lib/sanity";
 import { SANITY_QUERIES } from "../constants/sanity";
 import type { MusicTrack } from "../types/sanity";
+import { Agentation } from "agentation";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -90,6 +91,7 @@ export default async function RootLayout({
             aria-hidden="true"
             className="ascii-display opacity"
           ></div>
+          <Agentation />
         </ThemeProvider>
       </body>
     </html>
