@@ -24,7 +24,6 @@ export const DIRECTORY_LINKS = [
   { label: "resources", href: "/resources" },
   { label: "past projects", href: "/projects" },
   { label: "dreamspace", href: "/dreamspace" },
-  { label: "radio", href: "/radio" },
   { label: "manage", href: "/manage", suffix: " (only for ojus)" },
 ] as const;
 

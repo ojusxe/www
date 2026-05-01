@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { cn } from "../lib/utils";
+import { Label } from "@/components/ui/label";
 
 interface RadioPlayerProps {
   initialTracks?: { title: string; url: string }[];
@@ -193,17 +194,17 @@ export default function RadioPlayer({ initialTracks = [] }: RadioPlayerProps) {
       <div className="w-full text-center">
         <div className="flex flex-wrap justify-center gap-2">
           {musicTracks.map((track, index) => (
-             <button 
+             <button
                key={track.src}
                onClick={() => playSpecificTrack(index)}
                className={cn(
-                 "text-xs px-2 py-1 border rounded-sm font-mono transition-colors cursor-pointer",
-                 currentTrack === index && isPlaying 
-                   ? "border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/10" 
-                   : "border-transparent text-muted-foreground hover:bg-muted/50"
+                 'text-xs px-2 py-1 border rounded-sm font-mono transition-colors cursor-pointer',
+                 currentTrack === index && isPlaying
+                   ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/10'
+                   : 'border-transparent text-muted-foreground hover:bg-muted/50'
                )}
              >
-                {track.title}
+               {track.title}
              </button>
           ))}
         </div>

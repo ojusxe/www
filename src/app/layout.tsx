@@ -7,6 +7,10 @@ import { ThemeProvider } from "../contexts/theme-context";
 import config from "../constants/config";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import RadioWidget from "../components/radio-widget";
+import { publicClient } from "../lib/sanity";
+import { SANITY_QUERIES } from "../constants/sanity";
+import type { MusicTrack } from "../types/sanity";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,11 +54,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let tracks: MusicTrack[] = [];
+  try {
+    tracks = await publicClient.fetch(SANITY_QUERIES.musicTracks);
+  } catch {}
+
   return (
     <html
       lang="en"
@@ -75,6 +84,7 @@ export default function RootLayout({
             </Container>
           </main>
           <Footer />
+          <RadioWidget tracks={tracks} />
           <div
             id="ascii-display"
             aria-hidden="true"

@@ -16,9 +16,11 @@ export function Label({ children, expandedContent, className }: LabelProps) {
   return (
     <span
       className={cn(
-        "relative inline-block text-xs border border-border text-muted-foreground rounded-sm font-mono",
+        "relative inline-block text-xs rounded-sm font-mono",
         className
       )}
+      data-slot="label"
+      style={{ border: "1px solid #e5e7eb", color: "#6b7280", backgroundColor: "transparent" }}
       onMouseEnter={expandedContent ? () => setHovered(true) : undefined}
       onMouseLeave={expandedContent ? () => setHovered(false) : undefined}
     >
