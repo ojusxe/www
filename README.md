@@ -28,8 +28,8 @@ then pray it works on your machine too
 
 ### todos
 
-- [ ] add this component for the url preview : https://ui.aceternity.com/components/tooltip-card or https://ui.aceternity.com/components/link-preview
-- [ ] (probably not) add this for the bottom tldr photo sections: https://www.fancycomponents.dev/docs/components/blocks/drag-elements
+- [x] (cancelled) add this component for the url preview : https://ui.aceternity.com/components/tooltip-card or https://ui.aceternity.com/components/link-preview
+- [x] (probably not) add this for the bottom tldr photo sections: https://www.fancycomponents.dev/docs/components/blocks/drag-elements
 - [x] (cancelled) make a /radio route - need some cool ui with immersive ux
 - [ ] add CNAME for ojus.fyi, i.e, foo.ojus.fyi; provided "foo" is a project name
 - [x] for radio directory, we can serve music over cdn and put the enlarged header music icon as the page content
@@ -39,7 +39,8 @@ then pray it works on your machine too
 - [x] should we start writing blogs?
 - [ ] turn the radio route into a small radio widget component at the bottom right (listen music as you navigate through my portfolio) with a collapsible button 
 - [ ] masonry layout for the /projects: https://www.ui-layouts.com/components/masonary-grid
-- [ ] bump nextjs to version 16.x
-- [ ] maintain the constants across the app under /constants
+- [x] bump nextjs to version 16.x
+- [x] maintain the constants across the app under /constants
 - [ ] fix sanity api calling revalidation in /dreamspace and similar bad usage
 - [ ] resources with categories eg. component libraries
+- [x] expanded label animation for the detailed experience duration - reusbale

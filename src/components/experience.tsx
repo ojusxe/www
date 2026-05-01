@@ -1,4 +1,5 @@
 import { WORK_EXPERIENCE } from "@/constants/home";
+import { Label } from "@/components/ui/label";
 
 export default function Experience() {
   return (
@@ -7,7 +8,12 @@ export default function Experience() {
       <ul>
         {WORK_EXPERIENCE.map((experience) => (
           <li key={`${experience.period}-${experience.company}`}>
-            ({experience.period}) <a href={experience.href}>{experience.company}</a> -{" "}
+            <Label expandedContent={experience.fullPeriod}>
+              {experience.period}
+            </Label>
+            {" "}
+            <a href={experience.href}>{experience.company}</a>
+            {" - "}
             {experience.role}
           </li>
         ))}
