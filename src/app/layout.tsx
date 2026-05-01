@@ -7,6 +7,11 @@ import { ThemeProvider } from "../contexts/theme-context";
 import config from "../constants/config";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import RadioWidget from "../components/radio-widget";
+import { publicClient } from "../lib/sanity";
+import { SANITY_QUERIES } from "../constants/sanity";
+import type { MusicTrack } from "../types/sanity";
+import { Agentation } from "agentation";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,11 +55,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let tracks: MusicTrack[] = [];
+  try {
+    tracks = await publicClient.fetch(SANITY_QUERIES.musicTracks);
+  } catch {}
+
   return (
     <html
       lang="en"
@@ -65,19 +75,23 @@ export default function RootLayout({
       </head>
       <body className="font-inter bg-background text-foreground relative w-full min-h-screen">
         <ThemeProvider>
-          <main className="flex flex-col w-full h-full max-w-lg mx-auto justify-start min-h-screen px-4 md:px-0 opacity">
-            <Header />
+          <main className="flex flex-col w-full h-full justify-start min-h-screen px-4 md:px-0 opacity">
+            <div className="w-full max-w-lg mx-auto">
+              <Header />
+            </div>
             <Container>
               {children}
               <Analytics />
             </Container>
           </main>
           <Footer />
+          <RadioWidget tracks={tracks} />
           <div
             id="ascii-display"
             aria-hidden="true"
             className="ascii-display opacity"
           ></div>
+          <Agentation />
         </ThemeProvider>
       </body>
     </html>

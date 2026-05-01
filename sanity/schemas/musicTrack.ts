@@ -1,4 +1,4 @@
-export default {
+const musicTrack = {
   name: 'musicTrack',
   title: 'Music Track',
   type: 'document',
@@ -20,3 +20,5 @@ export default {
     },
   ],
 }
+
+export default musicTrack;

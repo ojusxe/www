@@ -1,33 +1,22 @@
+import { WORK_EXPERIENCE } from "@/constants/home";
+import { Label } from "@/components/ui/label";
+
 export default function Experience() {
   return (
     <>
       <h4>MY WORK EXPERIENCE SO FAR:</h4>
       <ul>
-        <li>
-          (26-) <a href="https://clueso.io">clueso</a> - design engineer intern
-        </li>
-        <li>
-          (25-) <a href="https://hammerai.com">hammerai</a> - maintainer & engineer
-        </li>
-        <li>
-          (24) <a href="https://flib.store">flib</a> - contribute to custom
-          swags e-commerce store
-        </li>
-        <li>
-          (24) <a href="https://noviga.tech">noviga automation</a> - automation
-          assest management system
-        </li>
-        <li>
-          (24) <a href="https://craftlab.ai">meta craftlab</a> - unpaid,
-          full-stack developer training
-        </li>
-        <li>
-          (23-24){" "}
-          <a href="https://www.linkedin.com/company/gdsc-ikgptu/posts/?feedView=all">
-            gdsc ikgptu
-          </a>{" "}
-          - unpaid, team collaboration
-        </li>
+        {WORK_EXPERIENCE.map((experience) => (
+          <li key={`${experience.period}-${experience.company}`}>
+            <Label expandedContent={experience.fullPeriod}>
+              {experience.period}
+            </Label>
+            {" "}
+            <a href={experience.href}>{experience.company}</a>
+            {" - "}
+            {experience.role}
+          </li>
+        ))}
       </ul>
     </>
   );

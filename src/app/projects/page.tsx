@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
+import { BackButton } from "../../components/ui/back-button";
 import Image from "next/image";
-import { Github, Link as LinkIcon } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 import  { projects } from "@/constants/projects";
 import { Project } from "@/types/projects";
@@ -16,8 +18,8 @@ export const dynamic = 'force-static';
 
 function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
   return (
-    <div className="relative w-full mb-6">
-      <pre className="prose-p:last-of-type:mb-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto">
+    <div className="relative mb-4 w-full break-inside-avoid">
+      <pre className="prose-p:last-of-type:mb-0 m-0 w-full font-mono text-xs p-3 py-2.5 border border-gray-200 text-gray-600 scroll-smooth overflow-auto transition-colors hover:border-green-500/60 hover:bg-green-50/50">
         <div className="w-full text-wrap">
           <span className="font-semibold">{project.title}</span>
 
@@ -66,7 +68,7 @@ function ProjectCard({ project, priority = false }: { project: Project; priority
                 className="flex items-center gap-1.5 text-xs hover:underline"
               >
                 {link.type === "github" ? (
-                  <Github className="size-3.5" />
+                  <FaGithub className="size-3.5" />
                 ) : (
                   <LinkIcon className="size-3.5" />
                 )}
@@ -82,11 +84,12 @@ function ProjectCard({ project, priority = false }: { project: Project; priority
 
 export default function ProjectsPage() {
   return (
-    <MdxLayout>
+    <MdxLayout constrainWidth={false}>
+      <BackButton href="/" label="back to home" />
       <h2>PROJECTS</h2>
       <h4>A COLLECTION OF PROJECTS I&apos;VE WORKED ON</h4>
 
-      <div className="mt-6">
+      <div className="mt-6 columns-1 gap-4 lg:columns-2">
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} priority={index < 2} />
         ))}

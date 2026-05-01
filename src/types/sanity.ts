@@ -1,13 +1,5 @@
 /* currently we manage contents for 
- @dreamspace route, @current-projects.tsx component, @resources route */
-
-export interface CurrentProject {
-  _id: string;
-  title: string;
-  url?: string;
-  description: string;
-  order?: number;
-}
+ @dreamspace route and @resources route */
 
 export interface GalleryItem {
   _id: string;

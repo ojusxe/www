@@ -1,27 +1,20 @@
 import { Metadata } from "next";
 import MdxLayout from "../../components/ui/mdx-layout";
+import { BackButton } from "../../components/ui/back-button";
 import { publicClient } from "../../lib/sanity";
 import { Resource } from "../../types/sanity";
 import { formatDate } from "../../lib/utils";
+import { SANITY_QUERIES } from "@/constants/sanity";
 
 export const metadata: Metadata = {
   title: "resources",
   description: "links i've found interesting, helpful, inspiring or cool",
 };
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60;
 
 async function getResources(): Promise<Resource[]> {
-  const query = `*[_type == "resource"] | order(order asc, _createdAt desc) {
-    _id,
-    title,
-    url,
-    description,
-    order,
-    _updatedAt
-  }`;
-
-  return publicClient.fetch(query);
+  return publicClient.fetch(SANITY_QUERIES.resources);
 }
 
 export default async function ResourcesPage() {
@@ -36,6 +29,7 @@ export default async function ResourcesPage() {
 
   return (
     <MdxLayout>
+      <BackButton href="/" label="back to home" />
       <h2>RESOURCES</h2>
       <h5>LAST UPDATED {lastUpdatedDate}</h5>
 

@@ -108,16 +108,13 @@ export default function Header() {
     const body = document.body;
     const main = document.querySelector("main");
 
-    if (!playedIntro || isRootRoute) {
+    if (!playedIntro) {
       // Ensure content is hidden FIRST
       if (body) body.classList.remove("background");
       if (main) main.classList.add("opacity");
       
       playAnimation();
-
-      if (!playedIntro) {
-        sessionStorage.setItem("hasPlayedIntro", "true");
-      }
+      sessionStorage.setItem("hasPlayedIntro", "true");
     } else {
       // Show content immediately for returning visitors on non-root
       setHasPlayedIntro(true);
