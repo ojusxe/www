@@ -1,14 +1,21 @@
 import { BackButton } from "@/components/ui/back-button";
+import { Label } from "@/components/ui/label";
 
 export const metadata = {
   title: "managing git credentials for multiple github accounts on one machine",
   description:
     "a clean setup for keeping work and personal github identities separate without credential conflicts",
   openGraph: {
-    images: [{ url: "/logs/manage-git-credentials.webp", width: 1200, height: 630 }],
+    title: "managing git credentials for multiple github accounts on one machine",
+    description: "a clean setup for keeping work and personal github identities separate without credential conflicts",
+    url: "https://ojus.fyi/logs/manage-git-credentials",
+    type: "article",
+    images: [{ url: "/logs/manage-git-credentials.webp", width: 1200, height: 630, alt: "managing git credentials" }],
   },
   twitter: {
     card: "summary_large_image",
+    title: "managing git credentials for multiple github accounts on one machine",
+    description: "a clean setup for keeping work and personal github identities separate without credential conflicts",
     images: ["/logs/manage-git-credentials.webp"],
   },
 };
@@ -25,9 +32,11 @@ commits may use the wrong email, authentication fails for private repos, or ssh 
 
 the approach here is to separate concerns cleanly: work uses ssh, personal uses https, and folder-based git config handles which identity is active
 
+> i'm using **macOS + zsh**. the commands are identical on bash. on linux the setup is the same except the credential helper — use `libsecret` instead of `osxkeychain`. on windows, use git bash or wsl and swap `osxkeychain` for `manager` (git credential manager).
+
 ---
 
-#### (1.0) git identity vs authentication
+#### <Label>1.0</Label> git identity vs authentication
 
 these are two different things. `user.name` and `user.email` define who authored the commit. ssh and https define how you authenticate with github. you can commit with one email and authenticate with a completely different account — git doesn't enforce a relationship between the two
 
@@ -44,7 +53,7 @@ this lets `~/work` use your work identity and `~/personal` use your personal one
 
 ---
 
-#### (2.0) setup
+#### <Label>2.0</Label> setup
 
 start by creating the two folders at the root of home; you'll put your work related repos inside the `~/work` and likewise personal projects inside the `~/personal`:
 
@@ -94,7 +103,7 @@ save and exit the same way: `ctrl + o` → `enter` → `ctrl + x`
 
 ---
 
-#### (3.0) work — ssh
+#### <Label>3.0</Label> work — ssh
 
 generate a dedicated ssh key for your work account:
 
@@ -130,7 +139,7 @@ git clone git@github.com:company/repo.git
 
 ---
 
-#### (4.0) personal — https
+#### <Label>4.0</Label> personal — https
 
 enable credential storage so you're not prompted every time:
 
@@ -149,7 +158,7 @@ git clone https://github.com/username/repo.git
 
 ---
 
-#### (5.0) common issues
+#### <Label>5.0</Label> common issues
 
 **wrong email in commits** 
 - run `git config --show-origin user.email` to see where the value is coming from. if there's a local override conflicting, clear it with `git config --local --unset user.email`.

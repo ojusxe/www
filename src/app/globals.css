@@ -170,7 +170,12 @@ body.background {
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Exclude snippets from blue theme styling */
+.blue-theme :not(pre) > code {
+  color: #374151 !important;
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+}
+
 .blue-theme pre {
   background-color: #ffffff !important;
   color: #6b7280 !important;
@@ -303,4 +308,9 @@ body.background {
 
 .blue-theme button[aria-label*="Music"]:hover .border-l-blue-600 {
   border-left-color: #e0e0e0 !important; /* Slightly dimmed white on hover */
+}
+
+@keyframes musicbar {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1); }
 }

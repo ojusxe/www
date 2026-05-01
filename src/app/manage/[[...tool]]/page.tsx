@@ -8,5 +8,9 @@ import config from '../../../../sanity.config'
 export const runtime = 'nodejs'
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return (
+    <div className="w-full max-w-lg mx-auto">
+      <NextStudio config={config} />
+    </div>
+  );
 }
